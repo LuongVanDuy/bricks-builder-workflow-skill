@@ -1,7 +1,7 @@
 interface:
   display_name: "Bricks Builder Workflow"
-  short_description: "Bricks-native design systems, templates, and lessons learned"
-  default_prompt: "Use the Bricks Builder Workflow skill to build or review this Bricks project. Apply confirmed lessons before generating files."
+  short_description: "Fast Bricks-native reference cloning and brand-led website building"
+  default_prompt: "Use the Bricks Builder Workflow skill. Route the project to Reference Clone, Brand-led Greenfield, or Hybrid mode; read only the needed references; apply active guardrails; ask only blocking questions; then build with native Bricks and the shared design-system foundation."
 
 policy:
   allow_implicit_invocation: true
