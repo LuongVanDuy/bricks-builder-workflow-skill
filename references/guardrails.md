@@ -18,3 +18,4 @@ Compact rules that must be applied on every Bricks task. This file is intentiona
 14. **Research has a stopping condition** — stop browsing once additional research is unlikely to materially change the current deliverable. Do not chase marginal certainty.
 15. **Validate once by default** — perform one final validation pass after the artifact is created. Re-validate only after an actual failure/fix.
 16. **Non-critical uncertainty must not block delivery** — use the best supported inference, label it briefly when important, and continue.
+17. **Template importer shape must come from a real same-type export** — never invent a generic Bricks template wrapper. Element IDs must be unique exactly 6-character alphanumeric IDs, and all `parent`/`children` references must be updated with them. For a Header export, use the verified Header wrapper (`type: header`, element array under `header`) rather than a guessed generic `content` array.
