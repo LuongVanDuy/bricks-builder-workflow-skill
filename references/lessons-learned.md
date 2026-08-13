@@ -115,3 +115,18 @@ Read this file before doing Bricks work. New confirmed lessons are appended chro
 **Rule:** Earliest usable artifact wins. Research and verification must have a stopping condition and must not delay delivery without a material accuracy reason.
 
 ---
+
+## L009 — Color Manager palette import is not the global palette collection shape
+
+**Status:** confirmed  
+**Date:** 2026-08-13  
+**Scope:** Bricks Color Manager JSON import/export  
+**Evidence:** A generated `02-colors.json` used the global array shape and Bricks rejected it as an invalid palette import; a real Bricks palette export uses a single root object.
+
+**Wrong:** Wrap an individual Color Manager palette in an outer array because the global Bricks color-palette storage/schema is an array.
+
+**Correct:** For the Color Manager palette importer/exporter, `02-colors.json` must be one root object with `id`, `name`, and `colors`. Each color uses `raw` as a CSS variable reference (for example `var(--color-primary)`) and `light` as the resolved color value. The array form describes the complete global stored collection, not the individual palette file imported from Color Manager.
+
+**Rule:** Importer-specific shape wins: Color Manager palette file = single object; global stored palette collection = array. Do not conflate the two.
+
+---
