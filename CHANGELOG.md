@@ -52,4 +52,12 @@
 - Added L010: Bricks individual template imports must follow a real export wrapper from the same template type.
 - Added strict validation for unique six-character alphanumeric Bricks element IDs and parent/children references.
 - Documented the verified Header export wrapper: `type: header`, elements under `header`, `templateType: header`.
-- Prevented guessed top-level fields such as `templateSettings`, `global_classes`, and `global_elements` from being added to individual template files without same-importer export evidence.
+- Prevented guessed top-level fields from being added to individual template files without same-importer export evidence.
+
+## 0.3.4 — 2026-08-13
+
+- Added L011: shared layout utilities must actually be used in generated Bricks templates.
+- Expanded `04-layout-framework.css` into a substantially more complete Tailwind-inspired layout layer: display, flex, alignment, order, grid columns/spans, sizing, containers, positioning, overflow, gaps, margins, padding, and media layout helpers.
+- Added utility-first template composition to active guardrails and Bricks JSON notes.
+- Prevented semantic component classes from duplicating ordinary flex/grid/gap/padding/sizing/positioning rules.
+- Required real `_cssGlobalClasses` IDs from the target Bricks site for final native utility composition.
