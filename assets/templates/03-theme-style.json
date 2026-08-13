@@ -1,0 +1,15 @@
+{
+  "label": "Project Base",
+  "settings": {
+    "_custom": true,
+    "conditions": {
+      "conditions": [
+        {
+          "id": "condition01",
+          "main": "any"
+        }
+      ]
+    }
+  },
+  "id": "project-base"
+}
