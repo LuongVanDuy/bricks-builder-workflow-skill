@@ -125,7 +125,7 @@ Read this file before doing Bricks work. New confirmed lessons are appended chro
 
 **Wrong:** Wrap an individual Color Manager palette in an outer array because the global Bricks color-palette storage/schema is an array.
 
-**Correct:** For the Color Manager palette importer/exporter, `02-colors.json` must be one root object with `id`, `name`, and `colors`. Each color uses `raw` as a CSS variable reference (for example `var(--color-primary)`) and `light` as the resolved color value. The array form describes the complete global stored collection, not the individual palette file imported from Color Manager.
+**Correct:** For the Color Manager palette importer/exporter, `02-colors.json` must be one root object with `id`, `name`, and `colors`. Each color uses `raw` as a CSS variable reference and `light` as the resolved color value. The array form describes the complete global stored collection, not the individual palette file imported from Color Manager.
 
 **Rule:** Importer-specific shape wins: Color Manager palette file = single object; global stored palette collection = array. Do not conflate the two.
 
@@ -140,8 +140,25 @@ Read this file before doing Bricks work. New confirmed lessons are appended chro
 
 **Wrong:** Build a plausible-looking generic JSON wrapper (`content`, guessed top-level settings, arbitrary-length element IDs) and assume Bricks' template importer accepts it.
 
-**Correct:** Use a real export from the same template type as the importer contract. For Header templates, preserve the verified Header wrapper with `type: header`, elements under `header`, and `templateType: header`. Every element ID must be a unique exactly six-character alphanumeric string, and every `parent`/`children` reference must be remapped consistently. Do not add guessed top-level fields such as `templateSettings`, `global_classes`, or `global_elements` unless a real export for that importer/version verifies their placement.
+**Correct:** Use a real export from the same template type as the importer contract. For Header templates, preserve the verified Header wrapper with `type: header`, elements under `header`, and `templateType: header`. Every element ID must be a unique exactly six-character alphanumeric string, and every `parent`/`children` reference must be remapped consistently. Do not add guessed top-level fields unless a real export for that importer/version verifies their placement.
 
 **Rule:** Same-type real export is the template wrapper schema. Validate six-character element IDs + hierarchy before delivery; never infer the importer wrapper from the internal/global data model.
+
+---
+
+## L011 — Shared layout utilities must actually be used in templates
+
+**Status:** confirmed  
+**Date:** 2026-08-13  
+**Scope:** Layout Framework / Global Classes / template generation  
+**Evidence:** After creating a shared utility framework, a generated Header still assigned semantic classes such as `site-header__inner`, `site-header__actions`, and `site-header__topbar-inner` for ordinary flex/gap/alignment/layout instead of composing the shared Tailwind-like utilities.
+
+**Wrong:** Build a reusable utility framework, then ignore it and create per-component semantic classes that duplicate common `display`, flex/grid, alignment, gap, padding, sizing, and positioning rules.
+
+**Correct:** Compose ordinary layout from reusable utility Global Classes (`flex`, `items-center`, `justify-between`, `gap-*`, `px-*`, `w-full`, `max-w-*`, `mx-auto`, `relative`, etc.). Keep semantic component classes only for genuinely component-specific visuals, selectors, states, pseudo-elements, interactions, plugin overrides, or exceptional responsive behavior.
+
+When generating Bricks template JSON, utility composition must use real `_cssGlobalClasses` IDs exported from the target site. If those IDs are not yet available, do not disguise plain `_cssClasses` as the final native Global Class solution; request/export the mapping first.
+
+**Rule:** Create utilities once, then actually compose templates from them. Component classes must not become a second layout framework.
 
 ---
