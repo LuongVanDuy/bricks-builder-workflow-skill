@@ -29,3 +29,13 @@
 - Added blocker/inferable/deferable question policy to reduce unnecessary clarification and speed up implementation.
 - Updated Quick Spec to remove reference-brand-biased example values and make fallback data explicitly neutral.
 - Updated OpenAI metadata and README for the new dual-mode workflow.
+
+## 0.3.1 — 2026-08-13
+
+- Added FAST ITERATION as the default execution mode.
+- Added L008: earliest usable artifact must be produced before unnecessary research/re-verification.
+- Added explicit stopping conditions for research in both Reference Clone and Greenfield workflows.
+- Prevented repeated external Bricks documentation checks when the rule/schema is already verified in the skill.
+- Added one-validation-pass default and incremental file delivery for multi-file stages.
+- Added requested-stage-only execution so agents do not speculatively continue into Header/Footer/pages.
+- Updated OpenAI skill prompt metadata to prefer artifact-first execution and minimal progress narration.
