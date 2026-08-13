@@ -85,3 +85,18 @@ Read this file before doing Bricks work. New confirmed lessons are appended chro
 **Rule:** Public URL first → proactive HTML/CSS/assets discovery → request user files only as fallback.
 
 ---
+
+## L007 — Keep research scoped to the exact requested domain
+
+**Status:** confirmed  
+**Date:** 2026-08-13  
+**Scope:** Reference-site cloning / web research  
+**Evidence:** User correction during Langfarm clone setup  
+
+**Wrong:** Use related, legacy, mirror, similarly named, or third-party domains as evidence for the requested reference website without explicit user approval.
+
+**Correct:** Treat the exact hostname supplied by the user as authoritative. Search, open, and follow assets from that hostname first. Only leave that domain when the requested domain itself explicitly references an external asset/CDN, or when the user explicitly asks for broader research. Clearly label external-source evidence if it is ever needed.
+
+**Rule:** Exact requested domain is the source of truth. Do not substitute `old.*`, mirrors, similarly named sites, aggregators, or unrelated search results for the target site.
+
+---
