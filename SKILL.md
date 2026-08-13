@@ -47,6 +47,7 @@ Base files:
 - Never style reusable components by generated `#brxe-*` IDs.
 - Never guess Bricks internal Global Class IDs.
 - For public reference websites, proactively discover accessible HTML, stylesheet links, CSS bundles, imports, and public assets before asking the user to upload CSS/source. Ask for files only after direct discovery is blocked, incomplete, or cannot be verified precisely.
+- Treat the exact hostname provided by the user as the source of truth. Do not use legacy subdomains, mirrors, similarly named domains, aggregators, or unrelated sites as evidence for the target website unless the user explicitly asks for broader research. External CDN/asset hosts are allowed only when the target domain itself references them.
 
 ## Classification rule
 
@@ -64,14 +65,18 @@ Structure/dynamic data   → Native Bricks element
 
 When cloning or learning from a reference site:
 
-1. Start from the public URL and proactively discover source assets:
+1. Lock research scope to the exact hostname supplied by the user.
+   - The requested hostname is authoritative.
+   - Do not substitute `old.*`, staging, mirror, similarly named, or third-party domains.
+   - Follow external CDN/asset URLs only when they are directly referenced by the requested site.
+2. Start from the public URL and proactively discover source assets:
    - inspect the rendered/public HTML available to the tools;
    - identify stylesheet/script asset URLs when exposed;
    - follow CSS `@import` and referenced public asset URLs where possible;
-   - try indexed/public framework bundle paths and related routes when the HTML parser hides `<head>` links;
+   - try public framework bundle paths on the same hostname when the HTML parser hides `<head>` links;
    - record tool/access limitations instead of immediately asking the user for files.
-2. Ask the user for HTML/CSS/source files only when public discovery is blocked, incomplete, or exact source verification is required.
-3. Extract:
+3. Ask the user for HTML/CSS/source files only when public discovery is blocked, incomplete, or exact source verification is required.
+4. Extract:
    - color palette
    - container widths
    - gutters
@@ -81,10 +86,10 @@ When cloning or learning from a reference site:
    - recurring element sizes
    - breakpoints
    - header/footer structure
-4. Convert the values into generic tokens.
-5. Generate/update the four foundation files.
-6. Build Header/Footer/Templates only after the foundation is stable.
-7. Preserve native WordPress/Bricks dynamic behavior.
+5. Convert the values into generic tokens.
+6. Generate/update the four foundation files.
+7. Build Header/Footer/Templates only after the foundation is stable.
+8. Preserve native WordPress/Bricks dynamic behavior.
 
 ## Bricks Global Classes
 
@@ -169,6 +174,7 @@ For Bricks tasks:
 
 Before delivery, verify:
 
+- research stayed scoped to the exact requested domain unless the target site itself referenced external assets;
 - native Bricks structure is used where possible;
 - WordPress Menu remains native when appropriate;
 - tokens/classes use generic naming;
