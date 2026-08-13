@@ -39,3 +39,10 @@
 - Added one-validation-pass default and incremental file delivery for multi-file stages.
 - Added requested-stage-only execution so agents do not speculatively continue into Header/Footer/pages.
 - Updated OpenAI skill prompt metadata to prefer artifact-first execution and minimal progress narration.
+
+## 0.3.2 — 2026-08-13
+
+- Added L009: distinguish the Color Manager individual palette import/export shape from the global stored color-palette collection schema.
+- Fixed `references/quick-spec.md`: `02-colors.json` now uses one root palette object and CSS-variable references in `raw`.
+- Added Color Manager importer-specific JSON guidance to `references/bricks-json-notes.md`.
+- Added warning about duplicate color variable names between Color Manager and Global Variables.
