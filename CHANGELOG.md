@@ -18,3 +18,14 @@
 - Added L007: keep reference-site research scoped to the exact hostname requested by the user.
 - Disallow substituting legacy subdomains, mirrors, similarly named domains, aggregators, or unrelated search results for the target site.
 - Allow external CDN/asset hosts only when they are directly referenced by the requested site.
+
+## 0.3.0 — 2026-08-13
+
+- Added Brand-led Greenfield mode for projects with no reference website.
+- Added Hybrid mode for original branding with selected reference patterns.
+- Refactored `SKILL.md` into a lightweight router with progressive reference loading.
+- Added `references/guardrails.md` so routine tasks load active rules without reading the full lesson history.
+- Added dedicated `workflow-reference.md`, `workflow-greenfield.md`, and `intake-schema.md` files.
+- Added blocker/inferable/deferable question policy to reduce unnecessary clarification and speed up implementation.
+- Updated Quick Spec to remove reference-brand-biased example values and make fallback data explicitly neutral.
+- Updated OpenAI metadata and README for the new dual-mode workflow.
