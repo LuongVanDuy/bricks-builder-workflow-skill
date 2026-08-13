@@ -40,6 +40,53 @@ Do not set `raw` to the hex value when the color is intended to be a Color Manag
 
 Also avoid duplicate variable names: Bricks blocks Color Manager variable names that already exist in another palette or in Global Variables.
 
+## Template JSON import/export wrapper
+
+Do not invent a generic wrapper for Bricks template JSON. Use a **real export of the same template type** as the structural reference for the importer being targeted.
+
+For a verified Header template export, the element array is stored under the template-type key:
+
+```json
+{
+  "id": 18,
+  "name": "header",
+  "title": "Header",
+  "type": "header",
+  "header": [
+    {
+      "id": "gkeuly",
+      "name": "section",
+      "parent": 0,
+      "children": ["xawoiz"],
+      "settings": []
+    }
+  ],
+  "templateType": "header"
+}
+```
+
+For Header imports, do **not** put the element array under a guessed generic `content` key when the actual Header export uses `header`.
+
+### Element ID rule
+
+Every Bricks element ID must be:
+- unique within the content area;
+- exactly 6 characters;
+- alphanumeric.
+
+When regenerating element IDs, update every corresponding `parent` and `children` reference in the same pass.
+
+### Wrapper rule
+
+When generating an importable individual template:
+1. obtain a real Bricks export for the same template type and current target version when possible;
+2. preserve its top-level wrapper shape;
+3. replace only the content/elements and fields that are understood;
+4. validate all element IDs and hierarchy references;
+5. do not invent placement for top-level fields such as `templateSettings`, `global_classes`, or `global_elements` unless a real export for that importer/version proves those fields belong there.
+
+A setting can be valid in Bricks' internal/template-settings schema without being valid at an arbitrarily guessed location in an individual template export file. Importer-specific export shape wins.
+
 ## Global Classes
 
 These are different:
