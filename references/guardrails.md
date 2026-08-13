@@ -12,3 +12,9 @@ Compact rules that must be applied on every Bricks task. This file is intentiona
 8. **Public source discovery before asking for files** — for a public reference URL, attempt HTML → stylesheet/bundle → imports/assets first. Ask the user for source files only when direct retrieval is blocked, incomplete, or precision requires them.
 9. **Ask only blocking questions** — if missing information can be safely designed/inferred, proceed and state the assumption. Batch genuinely blocking questions instead of interrupting repeatedly.
 10. **No generated Bricks IDs in reusable CSS** — never use `#brxe-*` as the stable hook for reusable design/component styling.
+11. **Fast artifact first** — create the requested usable file/output as soon as evidence is sufficient. Do not spend a long preamble explaining research before producing the artifact.
+12. **Requested stage only** — do not continue into later build stages unless the user explicitly asks. If the user requests the full Style System, create the four foundation files incrementally in order.
+13. **Do not re-verify settled rules** — reuse verified rules/schema already stored in this skill. Re-open external Bricks docs only for a real ambiguity, version-sensitive detail, contradiction, or previously unverified schema.
+14. **Research has a stopping condition** — stop browsing once additional research is unlikely to materially change the current deliverable. Do not chase marginal certainty.
+15. **Validate once by default** — perform one final validation pass after the artifact is created. Re-validate only after an actual failure/fix.
+16. **Non-critical uncertainty must not block delivery** — use the best supported inference, label it briefly when important, and continue.
