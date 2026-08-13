@@ -1,7 +1,7 @@
 interface:
   display_name: "Bricks Builder Workflow"
-  short_description: "Fast Bricks-native reference cloning and brand-led website building"
-  default_prompt: "Use the Bricks Builder Workflow skill. Route the project to Reference Clone, Brand-led Greenfield, or Hybrid mode; read only the needed references; apply active guardrails; ask only blocking questions; then build with native Bricks and the shared design-system foundation."
+  short_description: "Fast artifact-first Bricks cloning and brand-led website building"
+  default_prompt: "Use the Bricks Builder Workflow skill in FAST ITERATION mode. Route the project correctly, read only the references needed for the current stage, reuse verified Bricks rules instead of re-researching them, ask only blocking questions, stop research once evidence is sufficient, create the earliest usable artifact first, validate once, and do not continue into later stages unless explicitly requested."
 
 policy:
   allow_implicit_invocation: true
