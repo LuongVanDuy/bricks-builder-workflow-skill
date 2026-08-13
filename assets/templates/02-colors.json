@@ -1,0 +1,31 @@
+{
+  "id": "project-colors",
+  "name": "Project Colors",
+  "colors": [
+    {
+      "light": "#2563eb",
+      "raw": "#2563eb",
+      "id": "color001"
+    },
+    {
+      "light": "#0f172a",
+      "raw": "#0f172a",
+      "id": "color002"
+    },
+    {
+      "light": "#64748b",
+      "raw": "#64748b",
+      "id": "color003"
+    },
+    {
+      "light": "#e2e8f0",
+      "raw": "#e2e8f0",
+      "id": "color004"
+    },
+    {
+      "light": "#ffffff",
+      "raw": "#ffffff",
+      "id": "color005"
+    }
+  ]
+}
