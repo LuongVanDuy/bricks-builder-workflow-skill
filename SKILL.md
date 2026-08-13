@@ -1,15 +1,44 @@
 ---
 name: bricks-builder-workflow
-description: Build and improve Bricks Builder websites using a reusable Bricks-native design-system workflow: Variables CSS, Color Manager JSON, Theme Style, Tailwind-like Global Classes, WordPress-native menus, template JSON, responsive rules, and verified lesson capture after mistakes are resolved.
+description: Build Bricks Builder websites from either a reference site or a brand-led greenfield brief. Covers design-system extraction/creation, Bricks-native structure, Variables, Color Manager, Theme Style, utility Global Classes, WordPress-native behavior, templates, responsive rules, and verified lesson capture.
 ---
 
 # Bricks Builder Workflow
 
-Use this skill for Bricks Builder site setup, reference-site cloning, design-system extraction, Header/Footer/Templates, Global Classes, WordPress menus, and Bricks JSON work.
+Use this skill for Bricks site planning, design systems, reference cloning, brand-led original websites, Header/Footer/Templates, Global Classes, WordPress menus, and Bricks JSON.
 
-## Foundation order
+## Fast startup
 
-Always build the project foundation in this order:
+Read only what the current task needs:
+
+1. Read `references/guardrails.md`.
+2. Route the project:
+   - reference URL supplied → `references/workflow-reference.md`
+   - no reference URL / original brand site → `references/workflow-greenfield.md`
+   - both supplied → hybrid: use brand as primary identity and references only for explicitly requested patterns.
+3. Read `references/intake-schema.md` only when project inputs are incomplete or a question may be necessary.
+4. Read `references/quick-spec.md` only when generating the foundation files.
+5. Read `references/bricks-json-notes.md` only for Bricks JSON/import/export work.
+6. Read `references/lessons-learned.md` only when debugging a known mistake, reviewing history, or updating this skill.
+
+This progressive-loading rule is intentional: do not load every reference file on every task.
+
+## Project modes
+
+```text
+A. Reference Clone
+   URL → source evidence → normalized design system → Bricks
+
+B. Brand-led Greenfield
+   logo/business → brand + industry reasoning → IA → design system → Bricks
+
+C. Hybrid
+   brand is identity source; references supply selected UX/layout patterns only
+```
+
+Never force a reference-site workflow when no reference exists. Never force a greenfield redesign when the user asks for close reference parity.
+
+## Universal build order
 
 ```text
 01 Variables
@@ -19,9 +48,10 @@ Always build the project foundation in this order:
 05 Header
 06 Footer
 07 Pages / Templates
+08 Responsive / QA
 ```
 
-Base files:
+Base foundation files:
 
 ```text
 01-variables.css
@@ -30,28 +60,9 @@ Base files:
 04-layout-framework.css
 ```
 
-## Core rules
+## Style classification
 
-- Use native Bricks elements first: Section, Container, Block/Div, Heading/Text, Image/SVG, Nav Menu, Search, Query Loop, Form, WooCommerce elements.
-- Do not build whole page sections inside one HTML element when native Bricks elements can represent the structure.
-- WordPress navigation must use Bricks `nav-menu` connected to WordPress Menu data unless the user explicitly requests otherwise.
-- Keep reusable naming generic. Learn visual values from a reference site, but do not carry its brand name into reusable tokens/classes.
-- Variables store reusable values.
-- Typography and spacing tokens live in Variables CSS for this workflow.
-- Color Palette is managed through Bricks Color Manager JSON.
-- Theme Style applies global defaults by referencing Variables/Colors instead of duplicating hard-coded values.
-- Layout Framework contains reusable utility classes with short Tailwind-like names.
-- Do not create component classes for ordinary flex/grid/gap/padding rules.
-- Component classes are for component-specific selectors, states, pseudo-elements, animations, complex hover behavior, or plugin overrides.
-- Prefer Base/Desktop + Mobile responsive work. Avoid generating hundreds of responsive utility classes unless repeated use justifies them.
-- Never style reusable components by generated `#brxe-*` IDs.
-- Never guess Bricks internal Global Class IDs.
-- For public reference websites, proactively discover accessible HTML, stylesheet links, CSS bundles, imports, and public assets before asking the user to upload CSS/source. Ask for files only after direct discovery is blocked, incomplete, or cannot be verified precisely.
-- Treat the exact hostname provided by the user as the source of truth. Do not use legacy subdomains, mirrors, similarly named domains, aggregators, or unrelated sites as evidence for the target website unless the user explicitly asks for broader research. External CDN/asset hosts are allowed only when the target domain itself references them.
-
-## Classification rule
-
-Before implementing a style, classify it:
+Before implementing a style:
 
 ```text
 Reusable value          → Variables / Color Palette
@@ -61,41 +72,27 @@ Component-specific style → Component Class
 Structure/dynamic data   → Native Bricks element
 ```
 
-## Reference-site workflow
+Do not create a component class merely to repeat common flex/grid/gap/padding utilities.
 
-When cloning or learning from a reference site:
+## Bricks-native rule
 
-1. Lock research scope to the exact hostname supplied by the user.
-   - The requested hostname is authoritative.
-   - Do not substitute `old.*`, staging, mirror, similarly named, or third-party domains.
-   - Follow external CDN/asset URLs only when they are directly referenced by the requested site.
-2. Start from the public URL and proactively discover source assets:
-   - inspect the rendered/public HTML available to the tools;
-   - identify stylesheet/script asset URLs when exposed;
-   - follow CSS `@import` and referenced public asset URLs where possible;
-   - try public framework bundle paths on the same hostname when the HTML parser hides `<head>` links;
-   - record tool/access limitations instead of immediately asking the user for files.
-3. Ask the user for HTML/CSS/source files only when public discovery is blocked, incomplete, or exact source verification is required.
-4. Extract:
-   - color palette
-   - container widths
-   - gutters
-   - typography scale
-   - spacing scale
-   - radii
-   - recurring element sizes
-   - breakpoints
-   - header/footer structure
-5. Convert the values into generic tokens.
-6. Generate/update the four foundation files.
-7. Build Header/Footer/Templates only after the foundation is stable.
-8. Preserve native WordPress/Bricks dynamic behavior.
+Prefer native Bricks/WordPress/WooCommerce elements and dynamic data:
 
-## Bricks Global Classes
+```text
+Section / Container / Block
+Heading / Text / Image / SVG
+Nav Menu / Search / Offcanvas / Toggle
+Query Loop / Form
+WooCommerce native elements
+```
 
-Plain CSS class names are not equivalent to Bricks Global Class references.
+Do not build whole page sections as one HTML blob when native Bricks structure can represent them.
 
-Plain classes:
+WordPress navigation should use Bricks `nav-menu` connected to WordPress Menu data unless the user explicitly wants static navigation.
+
+## Global Classes
+
+Plain CSS names are not Bricks Global Class references.
 
 ```json
 {
@@ -105,7 +102,7 @@ Plain classes:
 }
 ```
 
-Bricks Global Classes:
+Native Bricks Global Classes use real internal IDs:
 
 ```json
 {
@@ -115,71 +112,65 @@ Bricks Global Classes:
 }
 ```
 
-When a template must use Global Classes:
-
-1. Read a real Global Classes export from the target Bricks site.
-2. Map `class name → internal Bricks class ID`.
-3. Use those real IDs in `_cssGlobalClasses`.
-4. Preserve Bricks runtime classes such as `brx-offcanvas-inner` in `_cssClasses` when needed.
+For template JSON:
+1. obtain a real Global Classes export from the target Bricks site;
+2. map `class name → internal ID`;
+3. use those IDs in `_cssGlobalClasses`;
+4. preserve Bricks-required runtime classes in `_cssClasses` when necessary.
 
 Never invent internal IDs.
 
+## Question policy
+
+Do not turn ordinary design decisions into user questions.
+
+```text
+BLOCKER   → ask
+INFERABLE → design/infer and state important assumption
+DEFERABLE → continue without asking
+```
+
+Batch blockers into one compact question set. Prefer 1–3 questions; rarely exceed 5.
+
+Examples normally handled by the agent without asking:
+- exact shades;
+- typography pair;
+- radius;
+- spacing;
+- container width;
+- card appearance;
+- ordinary responsive layout.
+
+Ask when an unknown can materially change positioning, information architecture, conversion flow, business correctness, or mandatory functionality.
+
 ## Self-improvement loop
 
-This skill must improve when a mistake is clearly resolved.
+Record a lesson only when:
+- an approach was actually wrong/inefficient;
+- the issue was identified by user feedback or testing;
+- a concrete corrected solution is established;
+- the rule is reusable.
 
-### Trigger a lesson only when all are true
+After a confirmed correction:
+1. append the historical lesson to `references/lessons-learned.md`;
+2. if it is an active reusable rule, also update `references/guardrails.md` or the relevant workflow/reference file;
+3. update affected template/reference content when necessary;
+4. add a `CHANGELOG.md` entry.
 
-- The assistant/skill produced an incorrect or inefficient approach.
-- The user identified the problem or testing exposed the problem.
-- A concrete replacement solution is now established.
-- The new rule is reusable beyond the single immediate element.
+Do not make future agents read the entire lesson history for routine tasks; distilled active rules belong in `guardrails.md`.
 
-Do not record:
-- unresolved guesses;
-- temporary debugging hypotheses;
-- one-off content preferences that do not affect the workflow;
-- claims that conflict with verified exports/docs without resolving the conflict first.
-
-### After a confirmed correction
-
-1. Summarize:
-   - what was wrong;
-   - why it failed;
-   - the verified/correct rule;
-   - scope of the rule;
-   - files/rules affected.
-2. Read `references/lessons-learned.md`.
-3. If the skill directory is writable, append the lesson using `scripts/record_lesson.py`.
-4. If the lesson changes a core workflow rule, also update the relevant section of `SKILL.md`, reference file, or template so future runs do not rely only on the lesson log.
-5. Add a short entry to `CHANGELOG.md`.
-6. Do not silently overwrite a user's established rule with a new conflicting rule. Resolve the conflict first.
-
-### ChatGPT vs Codex persistence
-
-- In a writable Codex local/repository skill, update the skill files directly after a confirmed correction.
-- In ChatGPT, if the current environment exposes supported skill-editing capability, apply the update there.
-- If the installed skill is not writable from the current chat, produce a concise `Skill update patch` containing the exact lesson and target rule change. Tell the user to update the skill through the Skills editor or by asking ChatGPT to modify the skill.
-- Never claim that an installed skill changed persistently unless the change was actually written/updated.
-
-## Required startup behavior
-
-For Bricks tasks:
-1. Read this file.
-2. Read `references/lessons-learned.md`.
-3. Read `references/quick-spec.md` when generating foundation files.
-4. Read `references/bricks-json-notes.md` when generating/importing Bricks JSON.
+If the current environment cannot persistently edit the skill, provide an exact skill-update patch instead of claiming it was saved.
 
 ## Final checks
 
-Before delivery, verify:
-
-- research stayed scoped to the exact requested domain unless the target site itself referenced external assets;
-- native Bricks structure is used where possible;
-- WordPress Menu remains native when appropriate;
-- tokens/classes use generic naming;
-- Theme Style does not duplicate Variables unnecessarily;
-- common layout uses Framework classes;
-- component classes are minimal;
-- Global Class IDs are real when `_cssGlobalClasses` is used;
-- no old resolved mistake from `lessons-learned.md` has been reintroduced.
+Before delivery verify:
+- correct mode was selected;
+- only blocking questions were asked;
+- native Bricks structure/dynamic behavior was preserved;
+- reusable naming is generic;
+- Variables, Colors, Theme Style, and Framework do not duplicate roles;
+- component CSS is minimal;
+- no reusable CSS depends on generated `#brxe-*` IDs;
+- `_cssGlobalClasses` uses real IDs when used;
+- reference research stayed within the requested source scope;
+- greenfield work reflects business/audience, not logo colors alone.
