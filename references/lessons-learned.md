@@ -130,3 +130,18 @@ Read this file before doing Bricks work. New confirmed lessons are appended chro
 **Rule:** Importer-specific shape wins: Color Manager palette file = single object; global stored palette collection = array. Do not conflate the two.
 
 ---
+
+## L010 — Bricks template imports require the real same-type export wrapper and valid element IDs
+
+**Status:** confirmed  
+**Date:** 2026-08-13  
+**Scope:** Bricks template JSON import/export  
+**Evidence:** Generated Langfarm Header JSON was rejected by Bricks. Comparison with a real Bricks Header export and Bricks element schema exposed two structural errors: the generated file stored Header elements under a generic `content` key instead of the Header export's `header` key, and several element IDs were not exactly six alphanumeric characters.
+
+**Wrong:** Build a plausible-looking generic JSON wrapper (`content`, guessed top-level settings, arbitrary-length element IDs) and assume Bricks' template importer accepts it.
+
+**Correct:** Use a real export from the same template type as the importer contract. For Header templates, preserve the verified Header wrapper with `type: header`, elements under `header`, and `templateType: header`. Every element ID must be a unique exactly six-character alphanumeric string, and every `parent`/`children` reference must be remapped consistently. Do not add guessed top-level fields such as `templateSettings`, `global_classes`, or `global_elements` unless a real export for that importer/version verifies their placement.
+
+**Rule:** Same-type real export is the template wrapper schema. Validate six-character element IDs + hierarchy before delivery; never infer the importer wrapper from the internal/global data model.
+
+---
