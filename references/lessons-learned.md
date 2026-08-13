@@ -100,3 +100,18 @@ Read this file before doing Bricks work. New confirmed lessons are appended chro
 **Rule:** Exact requested domain is the source of truth. Do not substitute `old.*`, mirrors, similarly named sites, aggregators, or unrelated search results for the target site.
 
 ---
+
+## L008 — Artifact-first execution is required for interactive Bricks work
+
+**Status:** confirmed  
+**Date:** 2026-08-13  
+**Scope:** Execution speed / ChatGPT Work / agent-style runs  
+**Evidence:** A Style System run spent more than 10 minutes researching and re-checking Bricks documentation before producing the first file.
+
+**Wrong:** Treat every Bricks task like an exhaustive autonomous research job: re-open documentation already encoded in the skill, validate repeatedly, continue researching after enough evidence exists, and delay all artifacts until the entire stage is fully analyzed.
+
+**Correct:** Default to fast iteration. Work only the requested stage, reuse rules already verified in the skill, stop research when evidence is sufficient, create the first usable artifact immediately, validate once at the end, and continue to later stages only when explicitly requested. For multi-file stages, create files incrementally instead of waiting for every research branch to finish.
+
+**Rule:** Earliest usable artifact wins. Research and verification must have a stopping condition and must not delay delivery without a material accuracy reason.
+
+---
