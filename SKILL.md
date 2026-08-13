@@ -1,6 +1,6 @@
 ---
 name: bricks-builder-workflow
-description: Build Bricks Builder websites from either a reference site or a brand-led greenfield brief. Optimized for fast, artifact-first execution: minimal research, progressive loading, Bricks-native structure, Variables, Color Manager, Theme Style, utility Global Classes, WordPress-native behavior, templates, responsive rules, and verified lesson capture.
+description: Build Bricks Builder websites from either a reference site or a brand-led greenfield brief. Optimized for fast, artifact-first execution: minimal research, progressive loading, Bricks-native structure, Variables, Color Manager, Theme Style, Tailwind-like utility Global Classes, WordPress-native behavior, templates, responsive rules, and verified lesson capture.
 ---
 
 # Bricks Builder Workflow
@@ -94,6 +94,43 @@ Structure/dynamic data   → Native Bricks element
 ```
 
 Do not create a component class merely to repeat common flex/grid/gap/padding utilities.
+
+## Utility-first composition
+
+The Layout Framework is a reusable Tailwind-inspired utility layer. For ordinary layout, compose Bricks elements from shared utilities before introducing component classes.
+
+Typical utilities include:
+
+```text
+flex / grid / hidden
+flex-row / flex-col / flex-wrap / flex-1 / grow / shrink-0
+items-* / justify-* / self-*
+grid-cols-* / col-span-* / order-*
+gap-* / gap-x-* / gap-y-*
+w-* / min-w-* / max-w-* / h-* / min-h-*
+container-max / container-wide / mx-auto
+relative / absolute / fixed / sticky / inset-0 / top-0 / z-*
+overflow-* / object-* / aspect-*
+p-* / px-* / py-* / m-* / mt-* / mb-*
+```
+
+Example: a Header inner wrapper should prefer a composition such as:
+
+```text
+flex + items-center + justify-between + gap-10 + px-4 + w-full + max-w-container + mx-auto
+```
+
+instead of creating `site-header__inner` merely to repeat those declarations.
+
+Use a semantic component class only when the styling is genuinely component-specific, such as:
+- complex descendant selectors;
+- unique hover/active states;
+- pseudo-elements;
+- animation/interaction behavior;
+- plugin/runtime overrides;
+- exceptional component responsive logic not worth promoting to a reusable utility.
+
+For Bricks template JSON, final native utility composition must use real `_cssGlobalClasses` IDs from the target site's Global Classes export. If the IDs are not yet available, do not pretend plain `_cssClasses` are equivalent and do not replace the intended utility composition with a new semantic layout class. Obtain/export the mapping first.
 
 ## Bricks-native rule
 
@@ -194,7 +231,8 @@ Before delivery verify:
 - native Bricks structure/dynamic behavior was preserved;
 - reusable naming is generic;
 - Variables, Colors, Theme Style, and Framework do not duplicate roles;
-- component CSS is minimal;
+- ordinary flex/grid/gap/padding/sizing/positioning is composed from Layout Framework utilities instead of duplicated in semantic component classes;
+- component CSS is limited to genuinely component-specific behavior;
 - no reusable CSS depends on generated `#brxe-*` IDs;
 - `_cssGlobalClasses` uses real IDs when used;
 - reference research stayed within the requested source scope;
