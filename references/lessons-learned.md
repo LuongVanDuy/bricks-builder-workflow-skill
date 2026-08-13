@@ -70,3 +70,18 @@ Read this file before doing Bricks work. New confirmed lessons are appended chro
 **Rule:** Preserve WordPress/Bricks native dynamic behavior whenever available.
 
 ---
+
+## L006 — Proactively discover public source assets before asking the user
+
+**Status:** confirmed  
+**Date:** 2026-08-13  
+**Scope:** Reference-site cloning / source discovery  
+**Evidence:** User correction during Langfarm clone setup  
+
+**Wrong:** Ask the user to provide the site's CSS immediately even though the reference website is public and asset discovery has not yet been attempted.
+
+**Correct:** Start from the public URL, inspect available HTML, follow discoverable stylesheet/bundle/import URLs, search related public asset paths when necessary, and only request HTML/CSS files if retrieval is blocked, incomplete, or exact source verification cannot be achieved.
+
+**Rule:** Public URL first → proactive HTML/CSS/assets discovery → request user files only as fallback.
+
+---
