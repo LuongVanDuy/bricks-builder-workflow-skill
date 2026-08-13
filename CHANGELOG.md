@@ -46,3 +46,10 @@
 - Fixed `references/quick-spec.md`: `02-colors.json` now uses one root palette object and CSS-variable references in `raw`.
 - Added Color Manager importer-specific JSON guidance to `references/bricks-json-notes.md`.
 - Added warning about duplicate color variable names between Color Manager and Global Variables.
+
+## 0.3.3 — 2026-08-13
+
+- Added L010: Bricks individual template imports must follow a real export wrapper from the same template type.
+- Added strict validation for unique six-character alphanumeric Bricks element IDs and parent/children references.
+- Documented the verified Header export wrapper: `type: header`, elements under `header`, `templateType: header`.
+- Prevented guessed top-level fields such as `templateSettings`, `global_classes`, and `global_elements` from being added to individual template files without same-importer export evidence.
