@@ -48,25 +48,36 @@ Values below are **neutral fallback examples**, not a brand prescription. In Ref
 
 Use generic names even when values come from a branded reference or logo.
 
+Do not put Color Manager token names in Global Variables if the same names will be created by `02-colors.json`; Bricks blocks duplicate variable names across Color Manager and Global Variables.
+
 ## 02 Colors — Bricks Color Manager JSON
 
-Schema example:
+For the **individual Color Manager importer**, the root is a single palette object, not an outer array.
 
 ```json
 {
-  "id": "project-colors",
+  "id": "58e6a6",
   "name": "Project Colors",
   "colors": [
-    {"light": "#2563eb", "raw": "#2563eb", "id": "color001"},
-    {"light": "#0f172a", "raw": "#0f172a", "id": "color002"},
-    {"light": "#ffffff", "raw": "#ffffff", "id": "color003"}
+    {"id": "920e35", "raw": "var(--color-primary)", "light": "#2563eb"},
+    {"id": "58c724", "raw": "var(--color-text)", "light": "#0f172a"},
+    {"id": "3f6995", "raw": "var(--color-surface)", "light": "#ffffff"}
   ]
 }
 ```
 
 The hex values above are examples only. Replace them with the project palette.
 
-Do not assume illustrative IDs are valid internal IDs for every Bricks object. When a target-site export is required for ID mapping, use the real export.
+Important distinction:
+
+```text
+Bricks global stored color-palette collection → array of palette objects
+Color Manager palette import/export file       → one palette object
+```
+
+`raw` is the CSS variable reference; `light` is the resolved color value. Do not use the hex value itself as `raw` for a modern Color Manager token.
+
+IDs in examples are illustrative. For a fresh generated palette, use unique Bricks-like IDs. When preserving or mapping an existing Bricks object, use IDs from the real export.
 
 ## 03 Theme Style — JSON
 
