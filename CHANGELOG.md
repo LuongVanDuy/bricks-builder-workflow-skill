@@ -12,3 +12,9 @@
 
 - Added L006: proactively discover HTML/CSS/public assets from reference websites before requesting source files from the user.
 - Updated reference-site workflow with an explicit source-discovery fallback sequence.
+
+## 0.2.2 — 2026-08-13
+
+- Added L007: keep reference-site research scoped to the exact hostname requested by the user.
+- Disallow substituting legacy subdomains, mirrors, similarly named domains, aggregators, or unrelated search results for the target site.
+- Allow external CDN/asset hosts only when they are directly referenced by the requested site.
