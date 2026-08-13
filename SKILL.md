@@ -1,11 +1,30 @@
 ---
 name: bricks-builder-workflow
-description: Build Bricks Builder websites from either a reference site or a brand-led greenfield brief. Covers design-system extraction/creation, Bricks-native structure, Variables, Color Manager, Theme Style, utility Global Classes, WordPress-native behavior, templates, responsive rules, and verified lesson capture.
+description: Build Bricks Builder websites from either a reference site or a brand-led greenfield brief. Optimized for fast, artifact-first execution: minimal research, progressive loading, Bricks-native structure, Variables, Color Manager, Theme Style, utility Global Classes, WordPress-native behavior, templates, responsive rules, and verified lesson capture.
 ---
 
 # Bricks Builder Workflow
 
 Use this skill for Bricks site planning, design systems, reference cloning, brand-led original websites, Header/Footer/Templates, Global Classes, WordPress menus, and Bricks JSON.
+
+## Default execution mode — FAST ITERATION
+
+Speed is a first-class requirement. Unless the user explicitly asks for exhaustive research, a full audit, or a long-form report, optimize for the earliest usable Bricks artifact.
+
+Rules:
+
+1. **Work only the requested stage.** Do not speculatively continue into later stages.
+2. **Artifact first.** As soon as there is enough evidence for the current deliverable, create the usable file/output before writing a long explanation.
+3. **Stop researching when evidence is sufficient.** Do not keep browsing for marginal certainty that does not materially change the current artifact.
+4. **Do not re-verify settled Bricks rules.** If the required format/rule is already verified in this skill (`guardrails`, `quick-spec`, `bricks-json-notes`), reuse it. Re-open external docs only when the current task exposes a real ambiguity, version-sensitive schema, or contradiction.
+5. **One validation pass by default.** Validate the finished artifact once. Do not repeatedly validate partial files unless a failure requires it.
+6. **Incremental delivery for multi-file stages.** When a stage contains multiple files, create each file as soon as its inputs are ready instead of waiting for all research to finish first.
+7. **Minimal progress prose.** Prefer producing the artifact over narrating every research/verification step.
+8. **Batch tool work when independent.** Fetch/inspect independent sources or files in parallel when tooling allows.
+9. **Use verified + inferred labels only where they matter.** Do not turn every value into a research report.
+10. **Do not block on non-critical uncertainty.** Use the best supported inference, label it briefly, and continue.
+
+When the user says `ưu tiên tốc độ`, `làm nhanh`, `fast`, or similar, apply these rules even more strictly.
 
 ## Fast startup
 
@@ -59,6 +78,8 @@ Base foundation files:
 03-theme-style.json
 04-layout-framework.css
 ```
+
+If the user requests only one stage, stop after that stage. If the user requests the whole Style System, create the four foundation files incrementally in the order above.
 
 ## Style classification
 
@@ -164,6 +185,10 @@ If the current environment cannot persistently edit the skill, provide an exact 
 ## Final checks
 
 Before delivery verify:
+- a usable artifact was produced as early as reasonably possible;
+- no unnecessary later stage was executed;
+- no external documentation was re-read for a rule already settled in the skill unless a real ambiguity required it;
+- research stopped once evidence was sufficient for the requested artifact;
 - correct mode was selected;
 - only blocking questions were asked;
 - native Bricks structure/dynamic behavior was preserved;
