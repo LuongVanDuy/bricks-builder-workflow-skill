@@ -46,6 +46,7 @@ Base files:
 - Prefer Base/Desktop + Mobile responsive work. Avoid generating hundreds of responsive utility classes unless repeated use justifies them.
 - Never style reusable components by generated `#brxe-*` IDs.
 - Never guess Bricks internal Global Class IDs.
+- For public reference websites, proactively discover accessible HTML, stylesheet links, CSS bundles, imports, and public assets before asking the user to upload CSS/source. Ask for files only after direct discovery is blocked, incomplete, or cannot be verified precisely.
 
 ## Classification rule
 
@@ -63,8 +64,14 @@ Structure/dynamic data   → Native Bricks element
 
 When cloning or learning from a reference site:
 
-1. Inspect the source/site.
-2. Extract:
+1. Start from the public URL and proactively discover source assets:
+   - inspect the rendered/public HTML available to the tools;
+   - identify stylesheet/script asset URLs when exposed;
+   - follow CSS `@import` and referenced public asset URLs where possible;
+   - try indexed/public framework bundle paths and related routes when the HTML parser hides `<head>` links;
+   - record tool/access limitations instead of immediately asking the user for files.
+2. Ask the user for HTML/CSS/source files only when public discovery is blocked, incomplete, or exact source verification is required.
+3. Extract:
    - color palette
    - container widths
    - gutters
@@ -74,10 +81,10 @@ When cloning or learning from a reference site:
    - recurring element sizes
    - breakpoints
    - header/footer structure
-3. Convert the values into generic tokens.
-4. Generate/update the four foundation files.
-5. Build Header/Footer/Templates only after the foundation is stable.
-6. Preserve native WordPress/Bricks dynamic behavior.
+4. Convert the values into generic tokens.
+5. Generate/update the four foundation files.
+6. Build Header/Footer/Templates only after the foundation is stable.
+7. Preserve native WordPress/Bricks dynamic behavior.
 
 ## Bricks Global Classes
 
