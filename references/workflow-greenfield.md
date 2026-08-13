@@ -6,6 +6,21 @@ Use when there is **no reference website to clone** or the user explicitly wants
 
 Turn limited business inputs (even only logo + industry + contact details) into a coherent Bricks-native website without making the user choose implementation details the agent can design itself.
 
+## Fast execution contract
+
+Default to **artifact-first** execution.
+
+1. Normalize the supplied inputs quickly.
+2. Ask only genuine strategic blockers.
+3. Do only the minimum research needed to support the current requested stage.
+4. Create the requested artifact as soon as the design direction is coherent enough.
+5. Perform one final validation pass.
+6. Stop after the requested stage unless the user explicitly asks to continue.
+
+Do not spend long periods researching competitors before producing a foundation file. Industry research is optional and bounded; skip it when supplied brand/business information is already enough for the current artifact.
+
+Do not re-open Bricks documentation for rules/schema already verified in this skill unless there is a real ambiguity, contradiction, version-sensitive detail, or unverified format.
+
 ## Fast intake rule
 
 Normalize what is known into the fields in `references/intake-schema.md`.
@@ -56,9 +71,11 @@ Offer → Audience → Problem/need → Proof → Primary CTA
 
 If information is sparse, use the most conservative reasonable interpretation and label it as an assumption.
 
-### 3. Industry pattern research
+### 3. Industry pattern research — optional and bounded
 
-When current research is available and materially useful, inspect a **small representative set** of current industry websites/sources to learn common UX expectations. This is pattern research, not cloning.
+Research only when it will materially improve the current decision.
+
+If research is needed, inspect a **small representative set** of current industry websites/sources to learn common UX expectations. Prefer roughly 2–3 strong sources; increase only when the industry is genuinely ambiguous.
 
 Research only what helps decisions such as:
 - expected navigation/content architecture;
@@ -68,7 +85,7 @@ Research only what helps decisions such as:
 - booking/quote/contact flows;
 - industry-specific content conventions.
 
-Keep research bounded for speed. Prefer roughly 3–5 representative sources when enough; do not browse endlessly.
+**Stopping condition:** once the pattern is clear enough to support the current artifact, stop browsing and build.
 
 Do not copy a competitor's brand system or page composition wholesale.
 
@@ -102,7 +119,7 @@ Image direction:
 Primary CTA:
 ```
 
-Then derive the Bricks foundation:
+Keep this brief. Then derive the Bricks foundation:
 
 ```text
 01 Variables
@@ -112,6 +129,8 @@ Then derive the Bricks foundation:
 ```
 
 Do not use arbitrary starter values when logo/business/research provides a better basis.
+
+If only one foundation stage is requested, create that artifact and stop. If the full Style System is requested, create 01 → 02 → 03 → 04 incrementally instead of waiting to finish all analysis first.
 
 ### 6. Build order
 
@@ -154,6 +173,8 @@ Check:
 - generic framework naming retained;
 - assumptions are visible where they materially affect strategy.
 
+Perform one normal validation pass. Do not repeatedly re-check unchanged outputs unless a real failure appears.
+
 ## Default behavior with very little data
 
 If the user gives only:
@@ -167,6 +188,6 @@ then:
 2. infer a preliminary visual direction;
 3. identify only the missing strategic blockers;
 4. ask one compact batch if necessary;
-5. otherwise proceed into IA + design system immediately.
+5. otherwise proceed into the requested artifact immediately.
 
 Do not stop merely because there is no reference website.
