@@ -1,0 +1,7 @@
+interface:
+  display_name: "Bricks Builder Workflow"
+  short_description: "Bricks-native design systems, templates, and lessons learned"
+  default_prompt: "Use the Bricks Builder Workflow skill to build or review this Bricks project. Apply confirmed lessons before generating files."
+
+policy:
+  allow_implicit_invocation: true
