@@ -1,13 +1,17 @@
 # Quick Spec
 
+Use this file only when generating the four foundation files.
+
+Values below are **neutral fallback examples**, not a brand prescription. In Reference mode, prefer verified source values. In Greenfield mode, derive values from brand/business/industry direction. Use fallback values only when no better evidence exists.
+
 ## 01 Variables — CSS
 
 ```css
 :root {
   /* Core */
-  --container-default: 1488px;
-  --container-large: 1600px;
-  --container-max: 1808px;
+  --container-default: 1200px;
+  --container-large: 1440px;
+  --container-max: 1600px;
   --gutter: 1rem;
 
   --radius-base: 0.375rem;
@@ -42,23 +46,31 @@
 }
 ```
 
-Use generic names even if values were learned from a branded reference site.
+Use generic names even when values come from a branded reference or logo.
 
 ## 02 Colors — Bricks Color Manager JSON
+
+Schema example:
 
 ```json
 {
   "id": "project-colors",
   "name": "Project Colors",
   "colors": [
-    {"light": "#ff4d00", "raw": "#ff4d00", "id": "color001"},
-    {"light": "#ffffff", "raw": "#ffffff", "id": "color002"},
-    {"light": "#000000", "raw": "#000000", "id": "color003"}
+    {"light": "#2563eb", "raw": "#2563eb", "id": "color001"},
+    {"light": "#0f172a", "raw": "#0f172a", "id": "color002"},
+    {"light": "#ffffff", "raw": "#ffffff", "id": "color003"}
   ]
 }
 ```
 
+The hex values above are examples only. Replace them with the project palette.
+
+Do not assume illustrative IDs are valid internal IDs for every Bricks object. When a target-site export is required for ID mapping, use the real export.
+
 ## 03 Theme Style — JSON
+
+Minimum shell:
 
 ```json
 {
@@ -78,18 +90,20 @@ Use generic names even if values were learned from a branded reference site.
 Principle:
 
 ```text
-Variables = values.
-Theme Style = where global defaults use those values.
+Variables = reusable values.
+Theme Style = where global defaults consume those values.
 ```
 
 Examples:
 
 ```text
 Body font-size     → var(--text-base)
-H2 size            → var(--text-4xl)
+H2 size            → typography token
 Button radius      → var(--radius-base)
 Section horizontal → var(--gutter)
 ```
+
+Do not redeclare the same hard-coded value in Theme Style when a token already exists.
 
 ## 04 Layout Framework — CSS
 
@@ -136,3 +150,5 @@ Section horizontal → var(--gutter)
   padding-bottom: var(--space-2);
 }
 ```
+
+Framework utilities should consume tokens and remain brand-agnostic.
