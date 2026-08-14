@@ -1,49 +1,77 @@
 #!/usr/bin/env python3
-from pathlib import Path
-import json
+from __future__ import annotations
+
+import ast
 import re
 import sys
+from pathlib import Path
+
 
 ROOT = Path(__file__).resolve().parents[1]
+errors: list[str] = []
 
-errors = []
 
 skill = ROOT / "SKILL.md"
-if not skill.exists():
-    errors.append("Missing SKILL.md")
+text = skill.read_text(encoding="utf-8") if skill.exists() else ""
+frontmatter = re.match(r"^---\n(.*?)\n---", text, re.S)
+if not frontmatter:
+    errors.append("SKILL.md missing YAML frontmatter")
 else:
-    text = skill.read_text(encoding="utf-8")
-    if not re.search(r"^---\s*\n.*?\n---", text, re.S):
-        errors.append("SKILL.md missing YAML front matter")
-    if not re.search(r"^name:\s*bricks-builder-workflow\s*$", text, re.M):
-        errors.append("SKILL.md name is missing or unexpected")
-    if not re.search(r"^description:\s*.+$", text, re.M):
-        errors.append("SKILL.md description missing")
+    keys = re.findall(r"^([a-zA-Z0-9_-]+):", frontmatter.group(1), re.M)
+    if keys != ["name", "description"]:
+        errors.append("Frontmatter must contain only name and description")
+if not re.search(r"^name:\s*bricks-builder-workflow\s*$", text, re.M):
+    errors.append("Unexpected skill name")
+if len(text.splitlines()) > 70:
+    errors.append("SKILL.md must stay at or below 70 lines")
 
-skills = list(ROOT.rglob("SKILL.md")) + list(ROOT.rglob("skill.md"))
-if len({p.resolve() for p in skills}) != 1:
-    errors.append(f"Expected exactly one SKILL.md, found {len(skills)}")
+required = [
+    "agents/openai.yaml",
+    "references/foundation.md",
+    "references/contracts.md",
+    "references/build.md",
+    "scripts/generate_project_base.py",
+    "scripts/generate_foundation.py",
+    "scripts/generate_theme_style.py",
+    "scripts/generate_utility_framework.py",
+    "scripts/inspect_project.py",
+]
+for relative in required:
+    if not (ROOT / relative).exists():
+        errors.append(f"Missing {relative}")
 
-for name in ["02-colors.json", "03-theme-style.json"]:
-    p = ROOT / "assets" / "templates" / name
+if len(list(ROOT.rglob("SKILL.md"))) != 1:
+    errors.append("Skill must contain exactly one SKILL.md")
+
+for reference in (ROOT / "references").glob("*.md"):
+    if len(reference.read_text(encoding="utf-8").splitlines()) > 100:
+        errors.append(f"Reference is too long: {reference.name}")
+
+for script in (ROOT / "scripts").glob("*.py"):
     try:
-        json.loads(p.read_text(encoding="utf-8"))
-    except Exception as e:
-        errors.append(f"Invalid JSON {name}: {e}")
+        ast.parse(script.read_text(encoding="utf-8"), filename=str(script))
+    except SyntaxError as exc:
+        errors.append(f"Invalid Python {script.name}: {exc}")
 
-for required in [
-    ROOT / "references" / "lessons-learned.md",
-    ROOT / "references" / "quick-spec.md",
-    ROOT / "references" / "bricks-json-notes.md",
-    ROOT / "agents" / "openai.yaml",
-]:
-    if not required.exists():
-        errors.append(f"Missing {required.relative_to(ROOT)}")
+for phrase in (
+    "generate_project_base.py",
+    "01-variables.json",
+    "02-colors.json",
+    "03-layout-framework.css",
+    "04-theme-style.json",
+    "Do not read generator source",
+):
+    if phrase not in text:
+        errors.append(f"SKILL.md missing {phrase!r}")
+
+yaml = (ROOT / "agents" / "openai.yaml").read_text(encoding="utf-8")
+if "$bricks-builder-workflow" not in yaml:
+    errors.append("agents/openai.yaml must invoke $bricks-builder-workflow")
 
 if errors:
     print("INVALID")
-    for e in errors:
-        print("-", e)
+    for error in errors:
+        print("-", error)
     sys.exit(1)
 
 print("VALID")

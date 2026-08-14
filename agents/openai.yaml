@@ -1,7 +1,7 @@
 interface:
   display_name: "Bricks Builder Workflow"
-  short_description: "Fast artifact-first Bricks cloning and brand-led website building"
-  default_prompt: "Use the Bricks Builder Workflow skill in FAST ITERATION mode. Route the project correctly, read only the references needed for the current stage, reuse verified Bricks rules instead of re-researching them, ask only blocking questions, stop research once evidence is sufficient, create the earliest usable artifact first, validate once, and do not continue into later stages unless explicitly requested."
+  short_description: "Build native Bricks sites from compact inputs"
+  default_prompt: "Use $bricks-builder-workflow. Choose one route, create the requested native Bricks artifact, validate once, and stop."
 
 policy:
   allow_implicit_invocation: true
