@@ -18,6 +18,8 @@ Project snapshot: Bricks `2.3.10`, child theme `1.1`. Reinspect only after the p
 - `_cssClasses` stores plain/runtime classes; `_cssGlobalClasses` stores only real IDs exported from the target site.
 - Never invent Global Class IDs or stable hooks such as `#brxe-*`.
 - Use a real same-version, same-type export wrapper. Header elements belong under `header`, not guessed `content`.
+- Builder canvas `Paste (All)` reads clipboard JSON `{content: [...], source: "bricksCopiedElements", sourceUrl, version}`; use this instead of a template wrapper for isolated page sections.
+- For file-only Windows handoff, place a double-click `.cmd` beside the clipboard JSON to validate it and retry `Set-Clipboard` on transient locks; do not rely on an agent session sharing its clipboard with the user's browser.
 - Element IDs are unique six-character alphanumeric values; update all parent/children references together.
 - Use native WordPress Menu through Bricks `nav-menu` unless static navigation is explicitly requested.
 

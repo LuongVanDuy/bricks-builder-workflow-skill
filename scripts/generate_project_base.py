@@ -31,7 +31,7 @@ def color_role(tokens: set[str], preferred: str) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Generate the four-file native Bricks project base.")
+    parser = argparse.ArgumentParser(description="Generate the four-file Bricks-native project base.")
     parser.add_argument("--spec", required=True, help="Compact project JSON spec")
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--font-family", help="Override theme.font_family")

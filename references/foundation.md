@@ -4,7 +4,7 @@ Use only for a new Bricks design system from a screenshot, logo, or compact bran
 
 ## Input
 
-Inspect the image once. Prefer repeated interface colors; ignore photographs, transparency, anti-aliasing pixels, and one-off decoration. Explicit dimensions win. Otherwise use content widths `1280 / 1440 / 760px`.
+Inspect the image once. Prefer repeated interface colors; ignore photographs, transparency, anti-aliasing pixels, and one-off decoration. Explicit dimensions win. Otherwise use content width `1280px`.
 
 Create one temporary spec:
 
@@ -41,5 +41,7 @@ Deliver exactly:
 ```
 
 Import in that order. Import `01` through Variables, `02` through Color Manager, parse `03` in Style Manager Framework and add the classes to Class Manager, then import `04` through Theme Styles. The CSS is conversion source; never enqueue it on the frontend.
+
+Keep Variables to layout, short typography/spacing scales, and radii. Keep Framework CSS to a small repeated core such as container, flex/grid, alignment, common gaps, basic columns, sizing, and position; do not recreate Tailwind or tokenize native controls.
 
 Validate once, return all four files as individual downloads, and stop. Do not browse Bricks documentation, regenerate later stages, retain a site copy, or package the skill unless a real version/schema conflict blocks delivery.

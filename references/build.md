@@ -15,18 +15,23 @@ Prefer native Section, Container, Block, Grid, Heading, Text, Image, SVG, Nav Me
 ```text
 Reusable value       -> Variable/Color
 Global default       -> Theme Style
-Common layout/style  -> utility Global Class
+One-off element rule -> native Bricks control
+Repeated pattern     -> Global Class
 Specific behavior    -> semantic component class
 Structure/data       -> native Bricks/WordPress element
 ```
 
-Compose ordinary layout from imported utilities (`flex`, `grid`, `items-*`, `gap-*`, `p*`, sizing, position). Prefer parent gaps over repeated child margins. Use semantic classes only for selectors, states, pseudo-elements, interactions, plugin overrides, or exceptional responsive rules.
+Use native controls for element-specific flex, grid, alignment, gap, sizing, position, and shadow settings. Promote a meaningful pattern to a Global Class only after it repeats across multiple elements; never recreate a full Tailwind catalog. A control existing in Bricks is not a reason to create a Variable or class. Prefer parent gaps over repeated child margins; use semantic classes only for selectors, states, pseudo-elements, interactions, plugin overrides, or exceptional responsive rules.
 
 Use native Bricks breakpoint settings. Do not place `@media` in Framework import CSS. Avoid two utilities that write the same property unless breakpoint/pseudo behavior makes precedence explicit.
 
+Keep visible text at or above `var(--text-xs)` (12px in the project base), including labels, captions, navigation, and buttons; icon glyph sizes are exempt.
+
 ## Template handoff
 
-Before generating template JSON, obtain the target site's Global Classes export and same-type template wrapper. Attach real IDs through `_cssGlobalClasses`; never disguise plain names in `_cssClasses` as native Global Classes.
+Before generating template JSON, obtain a same-type template wrapper. Request a Global Classes export only when the template intentionally depends on existing classes; attach real IDs through `_cssGlobalClasses` and never invent them.
+
+For a file-only handoff, inspect the target schema and IDs read-only, generate one importable JSON outside the WordPress tree, and stop. Do not open the Builder, import, activate, or modify the site; revise only from the user's import result.
 
 Build in this order unless the user asks for one isolated stage:
 

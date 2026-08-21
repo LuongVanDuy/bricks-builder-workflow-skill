@@ -1,6 +1,6 @@
 ---
 name: bricks-builder-workflow
-description: Build, audit, and learn native Bricks Builder sites quickly. Use for screenshot/logo-to-Bricks foundations, Variables, Color Manager, Theme Styles, Tailwind-like Global Classes, templates, child themes, responsive QA, and Bricks JSON imports/exports. Do not use for unrelated WordPress themes or generic frontend work.
+description: Build, audit, and learn native Bricks Builder sites quickly. Use for screenshot/logo-to-Bricks foundations, lean Variables, Color Manager, Theme Styles, small reusable Global Class sets, templates, child themes, responsive QA, and Bricks JSON imports/exports. Do not use for unrelated WordPress themes or generic frontend work.
 ---
 
 # Bricks Builder Workflow
@@ -21,7 +21,7 @@ Do not read generator source unless modifying it. Do not load multiple reference
 ```text
 01-variables.json        reusable non-color values + type/space scales
 02-colors.json           Color Manager tokens
-03-layout-framework.css  Framework conversion source for native classes
+03-layout-framework.css  small conversion source for repeated native classes
 04-theme-style.json      one token-driven Entire website base
 ```
 
@@ -31,7 +31,7 @@ Treat these as import handoff files, not child-theme source. Generate them in a 
 
 - Prefer native Bricks/WordPress elements and dynamic data.
 - Keep reusable names generic; consume tokens instead of duplicating values.
-- Compose common layout from utility Global Classes; reserve semantic classes for component-specific behavior.
+- Set one-off flex, grid, alignment, gap, sizing, and shadow values through native Bricks controls. Keep the foundation class set small; create more Global Classes only for patterns reused across multiple elements.
 - Never invent Global Class IDs or template wrappers. Use real target-site exports.
 - Treat the Bricks parent as read-only and snapshot targeted data before database writes.
 - Ask only blocking questions; infer routine design choices.

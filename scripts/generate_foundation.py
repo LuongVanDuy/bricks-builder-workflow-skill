@@ -71,6 +71,8 @@ def round_two(value: float) -> float:
 
 
 def fluid_value(min_px: float, max_px: float) -> str:
+    if min_px == max_px:
+        return f"{round_two(min_px / 10):g}rem"
     min_rem = round_two(min_px / 10)
     max_rem = round_two(max_px / 10)
     slope = float(f"{(max_rem - min_rem) / 108:.8f}")
@@ -85,80 +87,65 @@ def build_scale_data(project: str, used_ids: set[str]) -> tuple[list[dict[str, A
     categories: list[dict[str, Any]] = []
 
     type_category = stable_id(f"{project}:category:typography", used_ids)
-    type_names = ["xs", "s", "m", "l", "xl", "2xl", "3xl", "4xl"]
+    type_values = [
+        ("xs", 12, 12),
+        ("s", 13, 14),
+        ("m", 15, 16),
+        ("l", 18, 20),
+        ("xl", 26, 34),
+        ("2xl", 40, 52),
+    ]
+    type_names = [name for name, _, _ in type_values]
     type_baseline = type_names.index("m")
     type_scale = {
         "scaleScope": "typography",
-        "scaleType": "tshirt",
+        "scaleType": "custom",
         "scaleNames": type_names,
         "prefix": "text-",
-        "minFontSize": 16,
-        "minScaleRatio": 1.25,
-        "minScaleRatioSelect": 1.25,
-        "maxFontSize": 18,
-        "maxScaleRatio": 1.25,
-        "maxScaleRatioSelect": 1.25,
         "baseline": "m",
+        "isManual": True,
+        "manualValues": [
+            {"name": f"text-{name}", "min": f"{minimum}px", "max": f"{maximum}px"}
+            for name, minimum, maximum in type_values
+        ],
     }
-    categories.append({"id": type_category, "name": "06 Typography Scale", "scale": type_scale})
+    categories.append({"id": type_category, "name": "02 Typography", "scale": type_scale})
 
-    for index, name in enumerate(type_names):
-        step = index - type_baseline
-        min_px = 16.0
-        max_px = 18.0
-        if step < 0:
-            for _ in range(abs(step)):
-                min_px /= 1.25
-                max_px /= 1.25
-        elif step > 0:
-            for _ in range(step):
-                min_px *= 1.25
-                max_px *= 1.25
+    for index, (name, minimum, maximum) in enumerate(type_values):
         variables.append(
             {
                 "id": stable_id(f"{project}:variable:text-{name}", used_ids),
                 "name": f"text-{name}",
-                "value": fluid_value(min_px, max_px),
+                "value": fluid_value(minimum, maximum),
                 "category": type_category,
-                "scale": {"scale": step, "scaleName": name},
+                "scale": {"scale": index - type_baseline, "scaleName": name},
             }
         )
 
     spacing_category = stable_id(f"{project}:category:spacing", used_ids)
     spacing_values = [
-        ("1", 4, 4),
-        ("2", 8, 8),
-        ("3", 12, 12),
-        ("4", 16, 20),
-        ("6", 24, 30),
-        ("8", 32, 40),
-        ("10", 40, 50),
-        ("12", 48, 60),
-        ("15", 60, 75),
-        ("16", 64, 80),
-        ("20", 80, 100),
-        ("28", 112, 140),
+        ("xs", 4, 4),
+        ("s", 8, 8),
+        ("m", 12, 16),
+        ("l", 20, 24),
+        ("xl", 32, 40),
+        ("2xl", 48, 64),
+        ("section", 56, 80),
     ]
-    spacing_baseline = 3
+    spacing_baseline = 2
     spacing_scale = {
         "scaleScope": "spacing",
         "scaleType": "custom",
         "scaleNames": [name for name, _, _ in spacing_values],
         "prefix": "space-",
-        "minFontSize": 16,
-        "minScaleRatio": 1.5,
-        "minScaleRatioSelect": 1.5,
-        "maxFontSize": 20,
-        "maxScaleRatio": 1.5,
-        "maxScaleRatioSelect": 1.5,
-        "baseline": "4",
+        "baseline": "m",
         "isManual": True,
         "manualValues": [
             {"name": f"space-{name}", "min": f"{minimum}px", "max": f"{maximum}px"}
             for name, minimum, maximum in spacing_values
         ],
     }
-    categories.append({"id": spacing_category, "name": "07 Spacing Scale", "scale": spacing_scale})
+    categories.append({"id": spacing_category, "name": "03 Spacing", "scale": spacing_scale})
 
     for index, (name, minimum, maximum) in enumerate(spacing_values):
         variables.append(
@@ -178,87 +165,11 @@ def build_variables(spec: dict[str, Any]) -> dict[str, Any]:
     project = str(spec.get("project") or "Project").strip()
     layout = spec.get("layout") or {}
     content_width = layout.get("content_width", 1280)
-    if isinstance(content_width, (int, float)):
-        inferred_wide: Any = round(float(content_width) * 1.125)
-    else:
-        inferred_wide = 1440
-
-    groups: list[tuple[str, str, OrderedDict[str, str]]] = [
-        (
-            "layout",
-            "01 Layout",
-            OrderedDict(
-                [
-                    ("content-width", css_size(content_width)),
-                    ("content-width-wide", css_size(layout.get("content_width_wide", inferred_wide))),
-                    ("content-width-narrow", css_size(layout.get("content_width_narrow", 760))),
-                    ("gutter", css_size(layout.get("gutter", "clamp(1rem, 0.5rem + 1.5vw, 2rem)"))),
-                ]
-            ),
-        ),
-        (
-            "shape",
-            "02 Radius & Border",
-            OrderedDict(
-                [
-                    ("radius-s", "0.375rem"),
-                    ("radius-m", "0.625rem"),
-                    ("radius-l", "1rem"),
-                    ("radius-pill", "999rem"),
-                    ("border-thin", "1px"),
-                ]
-            ),
-        ),
-        (
-            "shadow",
-            "03 Shadow",
-            OrderedDict(
-                [
-                    ("shadow-s", "0 2px 8px rgb(15 23 42 / 0.06)"),
-                    ("shadow-m", "0 8px 24px rgb(15 23 42 / 0.1)"),
-                    ("shadow-l", "0 18px 48px rgb(15 23 42 / 0.14)"),
-                ]
-            ),
-        ),
-        (
-            "motion",
-            "04 Motion",
-            OrderedDict(
-                [
-                    ("duration-fast", "150ms"),
-                    ("duration-base", "250ms"),
-                    ("duration-slow", "400ms"),
-                    ("ease-standard", "cubic-bezier(0.2, 0, 0, 1)"),
-                ]
-            ),
-        ),
-        (
-            "layer",
-            "05 Layer",
-            OrderedDict(
-                [
-                    ("z-dropdown", "100"),
-                    ("z-sticky", "200"),
-                    ("z-overlay", "400"),
-                    ("z-modal", "500"),
-                ]
-            ),
-        ),
-    ]
-
-    overrides = {normalize_token(key): str(value).strip() for key, value in (spec.get("variables") or {}).items()}
-    known_names = {name for _, _, tokens in groups for name in tokens}
-    for _, _, tokens in groups:
-        for name in list(tokens):
-            if name in overrides:
-                tokens[name] = overrides.pop(name)
-    if overrides:
-        groups.append(("custom", "08 Custom", OrderedDict(sorted(overrides.items()))))
-
     used_ids: set[str] = set()
     variables: list[dict[str, Any]] = []
     categories: list[dict[str, Any]] = []
-    for group_key, label, tokens in groups:
+
+    def add_group(group_key: str, label: str, tokens: OrderedDict[str, str]) -> None:
         category_id = stable_id(f"{project}:category:{group_key}", used_ids)
         categories.append({"id": category_id, "name": label})
         for name, value in tokens.items():
@@ -271,9 +182,45 @@ def build_variables(spec: dict[str, Any]) -> dict[str, Any]:
                 }
             )
 
+    add_group(
+        "layout",
+        "01 Layout",
+        OrderedDict(
+            [
+                ("content-width", css_size(content_width)),
+                ("gutter", css_size(layout.get("gutter", "clamp(1.6rem, 1rem + 1.5vw, 3.2rem)"))),
+            ]
+        ),
+    )
+
     scale_variables, scale_categories = build_scale_data(project, used_ids)
     variables.extend(scale_variables)
     categories.extend(scale_categories)
+
+    add_group(
+        "shape",
+        "04 Radius",
+        OrderedDict(
+            [
+                ("radius-s", "0.4rem"),
+                ("radius-m", "0.8rem"),
+                ("radius-l", "1.6rem"),
+                ("radius-pill", "999rem"),
+            ]
+        ),
+    )
+
+    overrides = {
+        normalize_token(key): str(value).strip()
+        for key, value in (spec.get("variables") or {}).items()
+    }
+    for item in variables:
+        name = item["name"]
+        if name in overrides:
+            item["value"] = overrides.pop(name)
+    if overrides:
+        add_group("custom", "05 Custom", OrderedDict(sorted(overrides.items())))
+
     return {"variables": variables, "categories": categories}
 
 
