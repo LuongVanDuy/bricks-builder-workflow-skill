@@ -1,7 +1,7 @@
 interface:
   display_name: "Bricks Builder Workflow"
-  short_description: "Clone and build native Bricks sites fast"
-  default_prompt: "Use $bricks-builder-workflow. For a domain/clone request, generate the four foundation files immediately. For build work, start from the closest validated Bricks 2.3.10 pattern, adapt it, validate once, and stop at the requested artifact."
+  short_description: "Clone and build native Bricks sites from verified source"
+  default_prompt: "Use $bricks-builder-workflow. For a live domain/clone request, inspect exact-host HTML and loaded CSS first, require evidence for primary color, font family, and content width, then generate the four Bricks 2.3.10 foundation files. Never guess brand visuals. For build work, start from the closest validated pattern, adapt it, validate once, and stop at the requested artifact."
 
 policy:
   allow_implicit_invocation: true

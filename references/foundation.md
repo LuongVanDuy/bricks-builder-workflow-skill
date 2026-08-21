@@ -1,49 +1,51 @@
-# Fast four-file foundation
+# Evidence-backed four-file foundation
 
 Use for any new site, clone request, reference domain, screenshot, logo, or compact brand brief.
 
-## Speed contract
+## Live reference site
 
-The presence of a reference domain or screenshot is enough to start. Do not ask routine questions before generation. Inspect the homepage/image once, infer the foundation, generate all four files, validate once, and return them in the same response.
+A domain is enough to start, but not enough to guess. For a live site, first follow `site-inspection.md`.
 
-Do not read Bricks source, browse documentation, inspect generator code, or verify settled 2.3.10 contracts before generating. Only investigate after an actual import/schema failure or version change.
+The foundation spec must come from inspected evidence. Do not infer brand colors from the business category, site name, or general visual expectations.
 
-## One-pass extraction
-
-Capture only values that affect the reusable system:
-
-- project/site name
-- primary brand color and 0-3 repeated accent colors
-- repeated text/surface/border colors
-- content width; use `1280px` when not inferable
-- loaded project font if clearly identifiable; otherwise use a system font
-- unusual radius or spacing behavior only when repeated
-
-Ignore photo colors, antialiasing pixels, transparency noise, and one-off decoration.
-
-Create one temporary spec:
+Required verified fields before generation:
 
 ```json
 {
   "project": "Project Name",
-  "layout": {"content_width": 1280},
-  "palette": {
-    "color-primary": "#13723A",
-    "color-accent": "#F4A53B"
-  },
-  "theme": {"font_family": "Arial"}
+  "layout": {"content_width": "1200px"},
+  "palette": {"color-primary": "#1268A5"},
+  "theme": {"font_family": "Inter"},
+  "evidence": {
+    "source_type": "reference_site",
+    "url": "https://example.com/",
+    "status": "verified",
+    "primary_color": {"value": "#1268A5", "confidence": 0.99},
+    "font_family": {"value": "Inter", "confidence": 0.90},
+    "content_width": {"value": "1200px", "confidence": 0.90},
+    "stylesheets": ["https://example.com/app.css"],
+    "blockers": []
+  }
 }
 ```
 
-Only `project` and `palette.color-primary` are required.
-
-## Generate immediately
+Generate only with:
 
 ```text
-scripts/generate_project_base.py --spec <spec.json> --output-dir <temp-output>
+scripts/generate_project_base.py --spec <spec.json> --output-dir <temp-output> --require-reference-evidence
 ```
 
-Deliver exactly:
+The generator rejects a primary color, font, or width that does not match the evidence.
+
+## Screenshot, logo, or manual brief
+
+When no live site exists, inspect the supplied visual once. Use repeated interface colors; ignore photographs, transparency, antialiasing pixels, and one-off decoration. Explicit user dimensions/fonts win.
+
+For manual inputs, `project` and `palette.color-primary` remain the minimum required spec fields. Use a system font or default content width only when the user has not supplied a live site to clone.
+
+## Deliver
+
+Return exactly:
 
 ```text
 01-variables.json
