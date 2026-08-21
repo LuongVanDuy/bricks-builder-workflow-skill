@@ -1,10 +1,25 @@
-# Four-file foundation
+# Fast four-file foundation
 
-Use only for a new Bricks design system from a screenshot, logo, or compact brand brief.
+Use for any new site, clone request, reference domain, screenshot, logo, or compact brand brief.
 
-## Input
+## Speed contract
 
-Inspect the image once. Prefer repeated interface colors; ignore photographs, transparency, anti-aliasing pixels, and one-off decoration. Explicit dimensions win. Otherwise use content width `1280px`.
+The presence of a reference domain or screenshot is enough to start. Do not ask routine questions before generation. Inspect the homepage/image once, infer the foundation, generate all four files, validate once, and return them in the same response.
+
+Do not read Bricks source, browse documentation, inspect generator code, or verify settled 2.3.10 contracts before generating. Only investigate after an actual import/schema failure or version change.
+
+## One-pass extraction
+
+Capture only values that affect the reusable system:
+
+- project/site name
+- primary brand color and 0-3 repeated accent colors
+- repeated text/surface/border colors
+- content width; use `1280px` when not inferable
+- loaded project font if clearly identifiable; otherwise use a system font
+- unusual radius or spacing behavior only when repeated
+
+Ignore photo colors, antialiasing pixels, transparency noise, and one-off decoration.
 
 Create one temporary spec:
 
@@ -14,22 +29,19 @@ Create one temporary spec:
   "layout": {"content_width": 1280},
   "palette": {
     "color-primary": "#13723A",
-    "color-accent-orange": "#F4A53B",
-    "color-accent-blue": "#244E8A"
+    "color-accent": "#F4A53B"
   },
   "theme": {"font_family": "Arial"}
 }
 ```
 
-Only `project` and `palette.color-primary` are required. Use a system font unless the user supplies a loaded project font.
+Only `project` and `palette.color-primary` are required.
 
-## Generate
+## Generate immediately
 
 ```text
-scripts/generate_project_base.py --spec <spec.json> --output-dir <output>
+scripts/generate_project_base.py --spec <spec.json> --output-dir <temp-output>
 ```
-
-Set `<output>` to a temporary artifact directory outside the WordPress/site tree. Never place these generated files in the child theme unless the user explicitly requests repository storage.
 
 Deliver exactly:
 
@@ -40,8 +52,8 @@ Deliver exactly:
 04-theme-style.json
 ```
 
-Import in that order. Import `01` through Variables, `02` through Color Manager, parse `03` in Style Manager Framework and add the classes to Class Manager, then import `04` through Theme Styles. The CSS is conversion source; never enqueue it on the frontend.
+Import order: Variables -> Color Manager -> Style Manager Framework/Class Manager -> Theme Styles.
 
-Keep Variables to layout, short typography/spacing scales, and radii. Keep Framework CSS to a small repeated core such as container, flex/grid, alignment, common gaps, basic columns, sizing, and position; do not recreate Tailwind or tokenize native controls.
+`03-layout-framework.css` is only a conversion source that creates native Global Classes. Never enqueue it on the frontend.
 
-Validate once, return all four files as individual downloads, and stop. Do not browse Bricks documentation, regenerate later stages, retain a site copy, or package the skill unless a real version/schema conflict blocks delivery.
+Keep Variables to layout, type/space scales, radii, and a few meaningful custom values. Keep the framework small. Stop after the four files unless the user explicitly asks for the next stage.

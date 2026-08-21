@@ -1,0 +1,14 @@
+{
+  "content":[
+    {"id":"rsec01","name":"section","parent":0,"children":["rcon01"],"settings":{"_padding":{"top":"12px","right":"0px","bottom":"12px","left":"0px"},"_background":{"color":{"raw":"var(--color-surface)"}}},"label":"Header"},
+    {"id":"rcon01","name":"container","parent":"rsec01","children":["rlogo1","rnav01","rbtn01"],"settings":{"_display":"flex","_direction":"row","_justifyContent":"space-between","_alignItems":"center","_columnGap":"var(--space-m)","_cssGlobalClasses":["fc71db"]},"label":"Header inner"},
+    {"id":"rlogo1","name":"text-basic","parent":"rcon01","children":[],"settings":{"text":"LOGO","_typography":{"font-weight":"700","color":{"raw":"var(--color-primary)"}}},"label":"Logo placeholder"},
+    {"id":"rnav01","name":"nav-menu","parent":"rcon01","children":[],"settings":{"mobileMenu":"mobile_landscape"},"label":"Main navigation"},
+    {"id":"rbtn01","name":"button","parent":"rcon01","children":[],"settings":{"text":"Contact","link":{"type":"external","url":"#contact"},"_cssGlobalClasses":["335265"]},"label":"Header CTA"}
+  ],
+  "source":"bricksCopiedElements","sourceUrl":"https://reference.example","version":"2.3.10",
+  "globalClasses":[
+    {"id":"fc71db","name":"content-wrap","settings":{"_width":"100%","_widthMax":"var(--content-width)","_padding":{"right":"var(--gutter)","left":"var(--gutter)"}}},
+    {"id":"335265","name":"btn-primary","settings":{"_background":{"color":{"raw":"var(--color-primary)"}},"_typography":{"color":{"raw":"var(--color-surface)"},"font-weight":"600"},"_padding":{"top":"12px","right":"20px","bottom":"12px","left":"20px"},"_border":{"radius":{"top":"var(--radius-pill)","right":"var(--radius-pill)","bottom":"var(--radius-pill)","left":"var(--radius-pill)"}},"_background:hover":{"color":{"raw":"var(--color-primary-hover)"}}}}
+  ],"globalElements":[]
+}

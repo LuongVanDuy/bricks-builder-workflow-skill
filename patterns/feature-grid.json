@@ -1,0 +1,31 @@
+{
+  "content": [
+    {"id":"fsec01","name":"section","parent":0,"children":["fcon01"],"settings":{"_cssGlobalClasses":["5d93e9"]},"label":"Features"},
+    {"id":"fcon01","name":"container","parent":"fsec01","children":["fhead1","fgrid1"],"settings":{"_cssGlobalClasses":["fc71db","d7e564"]},"label":"Features container"},
+    {"id":"fhead1","name":"block","parent":"fcon01","children":["fey001","fh2001","ftxt01"],"settings":{"_cssGlobalClasses":["9f76a6"]},"label":"Features heading"},
+    {"id":"fey001","name":"text-basic","parent":"fhead1","children":[],"settings":{"text":"Why choose us","_cssGlobalClasses":["45e0ef"]},"label":"Eyebrow"},
+    {"id":"fh2001","name":"heading","parent":"fhead1","children":[],"settings":{"text":"Three reasons customers choose this business","tag":"h2"},"label":"Section title"},
+    {"id":"ftxt01","name":"text-basic","parent":"fhead1","children":[],"settings":{"text":"Replace with the short section introduction from the reference site.","_cssGlobalClasses":["cf5f10"]},"label":"Section intro"},
+    {"id":"fgrid1","name":"container","parent":"fcon01","children":["fcard1","fcard2","fcard3"],"settings":{"_cssGlobalClasses":["55bda5"]},"label":"Feature grid"},
+    {"id":"fcard1","name":"block","parent":"fgrid1","children":["fht001","ftx001"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Feature 1"},
+    {"id":"fht001","name":"heading","parent":"fcard1","children":[],"settings":{"text":"Feature 1","tag":"h3"},"label":"Feature 1 title"},
+    {"id":"ftx001","name":"text-basic","parent":"fcard1","children":[],"settings":{"text":"Replace with the matching benefit or service description.","_cssGlobalClasses":["cf5f10"]},"label":"Feature 1 text"},
+    {"id":"fcard2","name":"block","parent":"fgrid1","children":["fht002","ftx002"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Feature 2"},
+    {"id":"fht002","name":"heading","parent":"fcard2","children":[],"settings":{"text":"Feature 2","tag":"h3"},"label":"Feature 2 title"},
+    {"id":"ftx002","name":"text-basic","parent":"fcard2","children":[],"settings":{"text":"Replace with the matching benefit or service description.","_cssGlobalClasses":["cf5f10"]},"label":"Feature 2 text"},
+    {"id":"fcard3","name":"block","parent":"fgrid1","children":["fht003","ftx003"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Feature 3"},
+    {"id":"fht003","name":"heading","parent":"fcard3","children":[],"settings":{"text":"Feature 3","tag":"h3"},"label":"Feature 3 title"},
+    {"id":"ftx003","name":"text-basic","parent":"fcard3","children":[],"settings":{"text":"Replace with the matching benefit or service description.","_cssGlobalClasses":["cf5f10"]},"label":"Feature 3 text"}
+  ],
+  "source":"bricksCopiedElements","sourceUrl":"https://reference.example","version":"2.3.10",
+  "globalClasses":[
+    {"id":"5d93e9","name":"section-pad","settings":{"_padding":{"top":"var(--space-section)","right":"0px","bottom":"var(--space-section)","left":"0px"}}},
+    {"id":"fc71db","name":"content-wrap","settings":{"_width":"100%","_widthMax":"var(--content-width)","_padding":{"right":"var(--gutter)","left":"var(--gutter)"}}},
+    {"id":"d7e564","name":"stack-lg","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-l)"}},
+    {"id":"9f76a6","name":"stack","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-m)"}},
+    {"id":"45e0ef","name":"eyebrow","settings":{"_typography":{"font-size":"var(--text-s)","font-weight":"600","letter-spacing":"0.08em","text-transform":"uppercase","color":{"raw":"var(--color-primary)"}}}},
+    {"id":"cf5f10","name":"muted","settings":{"_typography":{"color":{"raw":"var(--color-text-muted)"}}}},
+    {"id":"55bda5","name":"grid-3","settings":{"_display":"grid","_gridTemplateColumns":"repeat(3, minmax(0, 1fr))","_gridGap":"var(--space-l)","_gridTemplateColumns:tablet_portrait":"repeat(2, minmax(0, 1fr))","_gridTemplateColumns:mobile_landscape":"1fr"}},
+    {"id":"5dd219","name":"card","settings":{"_background":{"color":{"raw":"var(--color-surface)"}},"_padding":{"top":"var(--space-l)","right":"var(--space-l)","bottom":"var(--space-l)","left":"var(--space-l)"},"_border":{"width":{"top":"1px","right":"1px","bottom":"1px","left":"1px"},"style":"solid","color":{"raw":"var(--color-border)"},"radius":{"top":"var(--radius-l)","right":"var(--radius-l)","bottom":"var(--radius-l)","left":"var(--radius-l)"}},"_display":"flex","_direction":"column","_rowGap":"var(--space-s)"}}
+  ],"globalElements":[]
+}

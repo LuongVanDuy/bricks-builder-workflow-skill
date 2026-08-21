@@ -1,0 +1,24 @@
+{
+  "content":[
+    {"id":"osec01","name":"section","parent":0,"children":["ocon01"],"settings":{"_padding":{"top":"var(--space-xl)","right":"0px","bottom":"var(--space-xl)","left":"0px"},"_background":{"color":{"raw":"var(--color-text)"}}},"label":"Footer"},
+    {"id":"ocon01","name":"container","parent":"osec01","children":["ogrid1","ocopy1"],"settings":{"_cssGlobalClasses":["fc71db","d7e564"]},"label":"Footer container"},
+    {"id":"ogrid1","name":"container","parent":"ocon01","children":["obrd01","olnk01","ocnt01"],"settings":{"_cssGlobalClasses":["55bda5"]},"label":"Footer columns"},
+    {"id":"obrd01","name":"block","parent":"ogrid1","children":["ologo1","odesc1"],"settings":{"_cssGlobalClasses":["9f76a6"]},"label":"Brand"},
+    {"id":"ologo1","name":"heading","parent":"obrd01","children":[],"settings":{"text":"Brand","tag":"div","_typography":{"color":{"raw":"var(--color-surface)"}}},"label":"Brand"},
+    {"id":"odesc1","name":"text-basic","parent":"obrd01","children":[],"settings":{"text":"Replace with the footer brand description.","_typography":{"color":{"raw":"var(--color-border)"}}},"label":"Brand description"},
+    {"id":"olnk01","name":"block","parent":"ogrid1","children":["olh001","olt001"],"settings":{"_cssGlobalClasses":["9f76a6"]},"label":"Links"},
+    {"id":"olh001","name":"heading","parent":"olnk01","children":[],"settings":{"text":"Quick links","tag":"h3","_typography":{"color":{"raw":"var(--color-surface)"}}},"label":"Links heading"},
+    {"id":"olt001","name":"text-basic","parent":"olnk01","children":[],"settings":{"text":"Home · About · Services · Contact","_typography":{"color":{"raw":"var(--color-border)"}}},"label":"Links placeholder"},
+    {"id":"ocnt01","name":"block","parent":"ogrid1","children":["och001","oct001"],"settings":{"_cssGlobalClasses":["9f76a6"]},"label":"Contact"},
+    {"id":"och001","name":"heading","parent":"ocnt01","children":[],"settings":{"text":"Contact","tag":"h3","_typography":{"color":{"raw":"var(--color-surface)"}}},"label":"Contact heading"},
+    {"id":"oct001","name":"text-basic","parent":"ocnt01","children":[],"settings":{"text":"Replace address, phone, email and hours.","_typography":{"color":{"raw":"var(--color-border)"}}},"label":"Contact details"},
+    {"id":"ocopy1","name":"text-basic","parent":"ocon01","children":[],"settings":{"text":"© {current_date:Y} Brand. All rights reserved.","_typography":{"color":{"raw":"var(--color-border)"},"font-size":"var(--text-s)"}},"label":"Copyright"}
+  ],
+  "source":"bricksCopiedElements","sourceUrl":"https://reference.example","version":"2.3.10",
+  "globalClasses":[
+    {"id":"fc71db","name":"content-wrap","settings":{"_width":"100%","_widthMax":"var(--content-width)","_padding":{"right":"var(--gutter)","left":"var(--gutter)"}}},
+    {"id":"d7e564","name":"stack-lg","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-l)"}},
+    {"id":"55bda5","name":"grid-3","settings":{"_display":"grid","_gridTemplateColumns":"repeat(3, minmax(0, 1fr))","_gridGap":"var(--space-l)","_gridTemplateColumns:tablet_portrait":"repeat(2, minmax(0, 1fr))","_gridTemplateColumns:mobile_landscape":"1fr"}},
+    {"id":"9f76a6","name":"stack","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-m)"}}
+  ],"globalElements":[]
+}

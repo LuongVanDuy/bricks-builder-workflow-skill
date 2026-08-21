@@ -1,0 +1,26 @@
+{
+  "content":[
+    {"id":"csec01","name":"section","parent":0,"children":["ccon01"],"settings":{"_cssGlobalClasses":["5d93e9","6929f7"]},"label":"Contact CTA"},
+    {"id":"ccon01","name":"container","parent":"csec01","children":["cbox01"],"settings":{"_cssGlobalClasses":["fc71db"]},"label":"Contact container"},
+    {"id":"cbox01","name":"block","parent":"ccon01","children":["cey001","ch2001","ctxt01","cact01"],"settings":{"_cssGlobalClasses":["5dd219","d7e564"]},"label":"Contact box"},
+    {"id":"cey001","name":"text-basic","parent":"cbox01","children":[],"settings":{"text":"Book an appointment","_cssGlobalClasses":["45e0ef"]},"label":"Eyebrow"},
+    {"id":"ch2001","name":"heading","parent":"cbox01","children":[],"settings":{"text":"Ready to get started?","tag":"h2"},"label":"CTA title"},
+    {"id":"ctxt01","name":"text-basic","parent":"cbox01","children":[],"settings":{"text":"Replace with booking/contact instructions and key contact details.","_cssGlobalClasses":["cf5f10"]},"label":"CTA text"},
+    {"id":"cact01","name":"container","parent":"cbox01","children":["cbtn01","cbtn02"],"settings":{"_cssGlobalClasses":["79f57d"]},"label":"CTA actions"},
+    {"id":"cbtn01","name":"button","parent":"cact01","children":[],"settings":{"text":"Book now","link":{"type":"external","url":"#booking"},"_cssGlobalClasses":["335265"]},"label":"Book button"},
+    {"id":"cbtn02","name":"button","parent":"cact01","children":[],"settings":{"text":"Call us","link":{"type":"external","url":"tel:+000000000"},"_cssGlobalClasses":["29ed79"]},"label":"Call button"}
+  ],
+  "source":"bricksCopiedElements","sourceUrl":"https://reference.example","version":"2.3.10",
+  "globalClasses":[
+    {"id":"5d93e9","name":"section-pad","settings":{"_padding":{"top":"var(--space-section)","right":"0px","bottom":"var(--space-section)","left":"0px"}}},
+    {"id":"6929f7","name":"soft-bg","settings":{"_background":{"color":{"raw":"var(--color-surface-soft)"}}}},
+    {"id":"fc71db","name":"content-wrap","settings":{"_width":"100%","_widthMax":"var(--content-width)","_padding":{"right":"var(--gutter)","left":"var(--gutter)"}}},
+    {"id":"5dd219","name":"card","settings":{"_background":{"color":{"raw":"var(--color-surface)"}},"_padding":{"top":"var(--space-l)","right":"var(--space-l)","bottom":"var(--space-l)","left":"var(--space-l)"},"_border":{"width":{"top":"1px","right":"1px","bottom":"1px","left":"1px"},"style":"solid","color":{"raw":"var(--color-border)"},"radius":{"top":"var(--radius-l)","right":"var(--radius-l)","bottom":"var(--radius-l)","left":"var(--radius-l)"}},"_display":"flex","_direction":"column","_rowGap":"var(--space-s)"}},
+    {"id":"d7e564","name":"stack-lg","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-l)"}},
+    {"id":"45e0ef","name":"eyebrow","settings":{"_typography":{"font-size":"var(--text-s)","font-weight":"600","letter-spacing":"0.08em","text-transform":"uppercase","color":{"raw":"var(--color-primary)"}}}},
+    {"id":"cf5f10","name":"muted","settings":{"_typography":{"color":{"raw":"var(--color-text-muted)"}}}},
+    {"id":"79f57d","name":"actions","settings":{"_display":"flex","_flexWrap":"wrap","_columnGap":"var(--space-s)","_rowGap":"var(--space-s)"}},
+    {"id":"335265","name":"btn-primary","settings":{"_background":{"color":{"raw":"var(--color-primary)"}},"_typography":{"color":{"raw":"var(--color-surface)"},"font-weight":"600"},"_padding":{"top":"12px","right":"20px","bottom":"12px","left":"20px"},"_border":{"radius":{"top":"var(--radius-pill)","right":"var(--radius-pill)","bottom":"var(--radius-pill)","left":"var(--radius-pill)"}},"_background:hover":{"color":{"raw":"var(--color-primary-hover)"}}}},
+    {"id":"29ed79","name":"btn-ghost","settings":{"_background":{"color":{"raw":"var(--color-surface)"}},"_typography":{"color":{"raw":"var(--color-primary)"},"font-weight":"600"},"_padding":{"top":"12px","right":"20px","bottom":"12px","left":"20px"},"_border":{"width":{"top":"1px","right":"1px","bottom":"1px","left":"1px"},"style":"solid","color":{"raw":"var(--color-primary)"},"radius":{"top":"var(--radius-pill)","right":"var(--radius-pill)","bottom":"var(--radius-pill)","left":"var(--radius-pill)"}}}}
+  ],"globalElements":[]
+}

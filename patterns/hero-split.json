@@ -1,0 +1,59 @@
+{
+  "content": [
+    {
+      "id": "hsec01",
+      "name": "section",
+      "parent": 0,
+      "children": ["hcon01"],
+      "settings": {"_cssGlobalClasses": ["5d93e9"]},
+      "label": "Hero"
+    },
+    {
+      "id": "hcon01",
+      "name": "container",
+      "parent": "hsec01",
+      "children": ["hgrid1"],
+      "settings": {"_cssGlobalClasses": ["fc71db"]},
+      "label": "Hero container"
+    },
+    {
+      "id": "hgrid1",
+      "name": "container",
+      "parent": "hcon01",
+      "children": ["hcopy1", "hmedia"],
+      "settings": {"_cssGlobalClasses": ["d393e0"]},
+      "label": "Hero grid"
+    },
+    {
+      "id": "hcopy1",
+      "name": "block",
+      "parent": "hgrid1",
+      "children": ["hey001", "hh1001", "htext1", "hact01"],
+      "settings": {"_cssGlobalClasses": ["d7e564"]},
+      "label": "Hero copy"
+    },
+    {"id":"hey001","name":"text-basic","parent":"hcopy1","children":[],"settings":{"text":"Eyebrow","_cssGlobalClasses":["45e0ef"]},"label":"Eyebrow"},
+    {"id":"hh1001","name":"heading","parent":"hcopy1","children":[],"settings":{"text":"A clear headline for the offer","tag":"h1"},"label":"Hero title"},
+    {"id":"htext1","name":"text-basic","parent":"hcopy1","children":[],"settings":{"text":"Supporting copy that explains the value proposition in one or two sentences.","_cssGlobalClasses":["cf5f10"]},"label":"Hero text"},
+    {"id":"hact01","name":"container","parent":"hcopy1","children":["hbtn01","hbtn02"],"settings":{"_cssGlobalClasses":["79f57d"]},"label":"Hero actions"},
+    {"id":"hbtn01","name":"button","parent":"hact01","children":[],"settings":{"text":"Primary action","link":{"type":"external","url":"#contact"},"_cssGlobalClasses":["335265"]},"label":"Primary CTA"},
+    {"id":"hbtn02","name":"button","parent":"hact01","children":[],"settings":{"text":"Learn more","link":{"type":"external","url":"#about"},"_cssGlobalClasses":["29ed79"]},"label":"Secondary CTA"},
+    {"id":"hmedia","name":"block","parent":"hgrid1","children":["himg01"],"settings":{},"label":"Hero media"},
+    {"id":"himg01","name":"image","parent":"hmedia","children":[],"settings":{"image":{"url":"https://reference.example/replace-me.jpg","external":true}},"label":"Hero image"}
+  ],
+  "source":"bricksCopiedElements",
+  "sourceUrl":"https://reference.example",
+  "version":"2.3.10",
+  "globalClasses":[
+    {"id":"5d93e9","name":"section-pad","settings":{"_padding":{"top":"var(--space-section)","right":"0px","bottom":"var(--space-section)","left":"0px"}}},
+    {"id":"fc71db","name":"content-wrap","settings":{"_width":"100%","_widthMax":"var(--content-width)","_padding":{"right":"var(--gutter)","left":"var(--gutter)"}}},
+    {"id":"d393e0","name":"grid-2","settings":{"_display":"grid","_gridTemplateColumns":"repeat(2, minmax(0, 1fr))","_gridGap":"var(--space-l)","_gridTemplateColumns:mobile_landscape":"1fr"}},
+    {"id":"d7e564","name":"stack-lg","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-l)"}},
+    {"id":"45e0ef","name":"eyebrow","settings":{"_typography":{"font-size":"var(--text-s)","font-weight":"600","letter-spacing":"0.08em","text-transform":"uppercase","color":{"raw":"var(--color-primary)"}}}},
+    {"id":"cf5f10","name":"muted","settings":{"_typography":{"color":{"raw":"var(--color-text-muted)"}}}},
+    {"id":"79f57d","name":"actions","settings":{"_display":"flex","_flexWrap":"wrap","_columnGap":"var(--space-s)","_rowGap":"var(--space-s)"}},
+    {"id":"335265","name":"btn-primary","settings":{"_background":{"color":{"raw":"var(--color-primary)"}},"_typography":{"color":{"raw":"var(--color-surface)"},"font-weight":"600"},"_padding":{"top":"12px","right":"20px","bottom":"12px","left":"20px"},"_border":{"radius":{"top":"var(--radius-pill)","right":"var(--radius-pill)","bottom":"var(--radius-pill)","left":"var(--radius-pill)"}},"_background:hover":{"color":{"raw":"var(--color-primary-hover)"}}}},
+    {"id":"29ed79","name":"btn-ghost","settings":{"_background":{"color":{"raw":"var(--color-surface)"}},"_typography":{"color":{"raw":"var(--color-primary)"},"font-weight":"600"},"_padding":{"top":"12px","right":"20px","bottom":"12px","left":"20px"},"_border":{"width":{"top":"1px","right":"1px","bottom":"1px","left":"1px"},"style":"solid","color":{"raw":"var(--color-primary)"},"radius":{"top":"var(--radius-pill)","right":"var(--radius-pill)","bottom":"var(--radius-pill)","left":"var(--radius-pill)"}}}}
+  ],
+  "globalElements":[]
+}

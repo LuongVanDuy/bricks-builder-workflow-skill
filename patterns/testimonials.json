@@ -1,0 +1,30 @@
+{
+  "content":[
+    {"id":"tsec01","name":"section","parent":0,"children":["tcon01"],"settings":{"_cssGlobalClasses":["5d93e9"]},"label":"Testimonials"},
+    {"id":"tcon01","name":"container","parent":"tsec01","children":["thead1","tgrid1"],"settings":{"_cssGlobalClasses":["fc71db","d7e564"]},"label":"Testimonials container"},
+    {"id":"thead1","name":"block","parent":"tcon01","children":["tey001","th2001"],"settings":{"_cssGlobalClasses":["9f76a6","f0931d"]},"label":"Testimonials heading"},
+    {"id":"tey001","name":"text-basic","parent":"thead1","children":[],"settings":{"text":"Testimonials","_cssGlobalClasses":["45e0ef"]},"label":"Eyebrow"},
+    {"id":"th2001","name":"heading","parent":"thead1","children":[],"settings":{"text":"What customers say","tag":"h2"},"label":"Testimonials title"},
+    {"id":"tgrid1","name":"container","parent":"tcon01","children":["tcard1","tcard2","tcard3"],"settings":{"_cssGlobalClasses":["55bda5"]},"label":"Testimonials grid"},
+    {"id":"tcard1","name":"block","parent":"tgrid1","children":["tqt001","tnm001"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Testimonial 1"},
+    {"id":"tqt001","name":"text-basic","parent":"tcard1","children":[],"settings":{"text":"“Replace with a real customer quote from the reference site.”"},"label":"Quote 1"},
+    {"id":"tnm001","name":"text-basic","parent":"tcard1","children":[],"settings":{"text":"Customer 1","_cssGlobalClasses":["45e0ef"]},"label":"Customer 1"},
+    {"id":"tcard2","name":"block","parent":"tgrid1","children":["tqt002","tnm002"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Testimonial 2"},
+    {"id":"tqt002","name":"text-basic","parent":"tcard2","children":[],"settings":{"text":"“Replace with a real customer quote from the reference site.”"},"label":"Quote 2"},
+    {"id":"tnm002","name":"text-basic","parent":"tcard2","children":[],"settings":{"text":"Customer 2","_cssGlobalClasses":["45e0ef"]},"label":"Customer 2"},
+    {"id":"tcard3","name":"block","parent":"tgrid1","children":["tqt003","tnm003"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Testimonial 3"},
+    {"id":"tqt003","name":"text-basic","parent":"tcard3","children":[],"settings":{"text":"“Replace with a real customer quote from the reference site.”"},"label":"Quote 3"},
+    {"id":"tnm003","name":"text-basic","parent":"tcard3","children":[],"settings":{"text":"Customer 3","_cssGlobalClasses":["45e0ef"]},"label":"Customer 3"}
+  ],
+  "source":"bricksCopiedElements","sourceUrl":"https://reference.example","version":"2.3.10",
+  "globalClasses":[
+    {"id":"5d93e9","name":"section-pad","settings":{"_padding":{"top":"var(--space-section)","right":"0px","bottom":"var(--space-section)","left":"0px"}}},
+    {"id":"fc71db","name":"content-wrap","settings":{"_width":"100%","_widthMax":"var(--content-width)","_padding":{"right":"var(--gutter)","left":"var(--gutter)"}}},
+    {"id":"d7e564","name":"stack-lg","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-l)"}},
+    {"id":"9f76a6","name":"stack","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-m)"}},
+    {"id":"f0931d","name":"center-text","settings":{"_typography":{"text-align":"center"}}},
+    {"id":"45e0ef","name":"eyebrow","settings":{"_typography":{"font-size":"var(--text-s)","font-weight":"600","letter-spacing":"0.08em","text-transform":"uppercase","color":{"raw":"var(--color-primary)"}}}},
+    {"id":"55bda5","name":"grid-3","settings":{"_display":"grid","_gridTemplateColumns":"repeat(3, minmax(0, 1fr))","_gridGap":"var(--space-l)","_gridTemplateColumns:tablet_portrait":"repeat(2, minmax(0, 1fr))","_gridTemplateColumns:mobile_landscape":"1fr"}},
+    {"id":"5dd219","name":"card","settings":{"_background":{"color":{"raw":"var(--color-surface)"}},"_padding":{"top":"var(--space-l)","right":"var(--space-l)","bottom":"var(--space-l)","left":"var(--space-l)"},"_border":{"width":{"top":"1px","right":"1px","bottom":"1px","left":"1px"},"style":"solid","color":{"raw":"var(--color-border)"},"radius":{"top":"var(--radius-l)","right":"var(--radius-l)","bottom":"var(--radius-l)","left":"var(--radius-l)"}},"_display":"flex","_direction":"column","_rowGap":"var(--space-s)"}}
+  ],"globalElements":[]
+}

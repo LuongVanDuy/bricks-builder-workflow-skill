@@ -1,0 +1,39 @@
+{
+  "content":[
+    {"id":"psec01","name":"section","parent":0,"children":["pcon01"],"settings":{"_cssGlobalClasses":["5d93e9","6929f7"]},"label":"Pricing"},
+    {"id":"pcon01","name":"container","parent":"psec01","children":["phead1","pgrid1"],"settings":{"_cssGlobalClasses":["fc71db","d7e564"]},"label":"Pricing container"},
+    {"id":"phead1","name":"block","parent":"pcon01","children":["pey001","ph2001"],"settings":{"_cssGlobalClasses":["9f76a6","f0931d"]},"label":"Pricing heading"},
+    {"id":"pey001","name":"text-basic","parent":"phead1","children":[],"settings":{"text":"Packages","_cssGlobalClasses":["45e0ef"]},"label":"Eyebrow"},
+    {"id":"ph2001","name":"heading","parent":"phead1","children":[],"settings":{"text":"Choose the right package","tag":"h2"},"label":"Pricing title"},
+    {"id":"pgrid1","name":"container","parent":"pcon01","children":["pcard1","pcard2","pcard3"],"settings":{"_cssGlobalClasses":["55bda5"]},"label":"Pricing grid"},
+    {"id":"pcard1","name":"block","parent":"pgrid1","children":["ptt001","ppr001","pds001","pbt001"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Package 1"},
+    {"id":"ptt001","name":"heading","parent":"pcard1","children":[],"settings":{"text":"Package 1","tag":"h3"},"label":"Package 1 title"},
+    {"id":"ppr001","name":"heading","parent":"pcard1","children":[],"settings":{"text":"Replace price","tag":"div","_typography":{"color":{"raw":"var(--color-primary)"},"font-size":"var(--text-xl)","font-weight":"700"}},"label":"Package 1 price"},
+    {"id":"pds001","name":"text-basic","parent":"pcard1","children":[],"settings":{"text":"Replace with package inclusions or short description.","_cssGlobalClasses":["cf5f10"]},"label":"Package 1 description"},
+    {"id":"pbt001","name":"button","parent":"pcard1","children":[],"settings":{"text":"Book now","link":{"type":"external","url":"#contact"},"_cssGlobalClasses":["335265"]},"label":"Package 1 CTA"},
+    {"id":"pcard2","name":"block","parent":"pgrid1","children":["ptt002","ppr002","pds002","pbt002"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Package 2"},
+    {"id":"ptt002","name":"heading","parent":"pcard2","children":[],"settings":{"text":"Package 2","tag":"h3"},"label":"Package 2 title"},
+    {"id":"ppr002","name":"heading","parent":"pcard2","children":[],"settings":{"text":"Replace price","tag":"div","_typography":{"color":{"raw":"var(--color-primary)"},"font-size":"var(--text-xl)","font-weight":"700"}},"label":"Package 2 price"},
+    {"id":"pds002","name":"text-basic","parent":"pcard2","children":[],"settings":{"text":"Replace with package inclusions or short description.","_cssGlobalClasses":["cf5f10"]},"label":"Package 2 description"},
+    {"id":"pbt002","name":"button","parent":"pcard2","children":[],"settings":{"text":"Book now","link":{"type":"external","url":"#contact"},"_cssGlobalClasses":["335265"]},"label":"Package 2 CTA"},
+    {"id":"pcard3","name":"block","parent":"pgrid1","children":["ptt003","ppr003","pds003","pbt003"],"settings":{"_cssGlobalClasses":["5dd219"]},"label":"Package 3"},
+    {"id":"ptt003","name":"heading","parent":"pcard3","children":[],"settings":{"text":"Package 3","tag":"h3"},"label":"Package 3 title"},
+    {"id":"ppr003","name":"heading","parent":"pcard3","children":[],"settings":{"text":"Replace price","tag":"div","_typography":{"color":{"raw":"var(--color-primary)"},"font-size":"var(--text-xl)","font-weight":"700"}},"label":"Package 3 price"},
+    {"id":"pds003","name":"text-basic","parent":"pcard3","children":[],"settings":{"text":"Replace with package inclusions or short description.","_cssGlobalClasses":["cf5f10"]},"label":"Package 3 description"},
+    {"id":"pbt003","name":"button","parent":"pcard3","children":[],"settings":{"text":"Book now","link":{"type":"external","url":"#contact"},"_cssGlobalClasses":["335265"]},"label":"Package 3 CTA"}
+  ],
+  "source":"bricksCopiedElements","sourceUrl":"https://reference.example","version":"2.3.10",
+  "globalClasses":[
+    {"id":"5d93e9","name":"section-pad","settings":{"_padding":{"top":"var(--space-section)","right":"0px","bottom":"var(--space-section)","left":"0px"}}},
+    {"id":"6929f7","name":"soft-bg","settings":{"_background":{"color":{"raw":"var(--color-surface-soft)"}}}},
+    {"id":"fc71db","name":"content-wrap","settings":{"_width":"100%","_widthMax":"var(--content-width)","_padding":{"right":"var(--gutter)","left":"var(--gutter)"}}},
+    {"id":"d7e564","name":"stack-lg","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-l)"}},
+    {"id":"9f76a6","name":"stack","settings":{"_display":"flex","_direction":"column","_rowGap":"var(--space-m)"}},
+    {"id":"f0931d","name":"center-text","settings":{"_typography":{"text-align":"center"}}},
+    {"id":"45e0ef","name":"eyebrow","settings":{"_typography":{"font-size":"var(--text-s)","font-weight":"600","letter-spacing":"0.08em","text-transform":"uppercase","color":{"raw":"var(--color-primary)"}}}},
+    {"id":"55bda5","name":"grid-3","settings":{"_display":"grid","_gridTemplateColumns":"repeat(3, minmax(0, 1fr))","_gridGap":"var(--space-l)","_gridTemplateColumns:tablet_portrait":"repeat(2, minmax(0, 1fr))","_gridTemplateColumns:mobile_landscape":"1fr"}},
+    {"id":"5dd219","name":"card","settings":{"_background":{"color":{"raw":"var(--color-surface)"}},"_padding":{"top":"var(--space-l)","right":"var(--space-l)","bottom":"var(--space-l)","left":"var(--space-l)"},"_border":{"width":{"top":"1px","right":"1px","bottom":"1px","left":"1px"},"style":"solid","color":{"raw":"var(--color-border)"},"radius":{"top":"var(--radius-l)","right":"var(--radius-l)","bottom":"var(--radius-l)","left":"var(--radius-l)"}},"_display":"flex","_direction":"column","_rowGap":"var(--space-s)"}},
+    {"id":"cf5f10","name":"muted","settings":{"_typography":{"color":{"raw":"var(--color-text-muted)"}}}},
+    {"id":"335265","name":"btn-primary","settings":{"_background":{"color":{"raw":"var(--color-primary)"}},"_typography":{"color":{"raw":"var(--color-surface)"},"font-weight":"600"},"_padding":{"top":"12px","right":"20px","bottom":"12px","left":"20px"},"_border":{"radius":{"top":"var(--radius-pill)","right":"var(--radius-pill)","bottom":"var(--radius-pill)","left":"var(--radius-pill)"}},"_background:hover":{"color":{"raw":"var(--color-primary-hover)"}}}}
+  ],"globalElements":[]
+}
